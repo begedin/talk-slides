@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Ecto Sandbox Plug (Hrvatski)</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
+    <link rel="stylesheet" href="./_assets/theme.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+<div class="centered" markdown="1">
+  <h1>Ecto Sandbox Plug!</h1>
+  <h2>Nikola Begedin</h2>
+  <h3>Bego Solutions</h3>
+</div>
+</script></section><section  data-markdown><script type="text/template">## DataCase -> ConnCase
+- brzi integracijski testovi
+- izolirani
+
+```elixir
+def setup_sandbox(tags) do
+  pid = Ecto.Adapters.SQL.Sandbox.start_owner!(
+    SampleApp.Repo, shared: not tags[:async]
+  )
+  on_exit(fn ->
+    Ecto.Adapters.SQL.Sandbox.stop_owner(pid)
+  end)
+
+  :ok
+end
+```
+</script></section><section  data-markdown><script type="text/template">## Phoenix E2E testovi
+- Hound ili Wallaby
+- Također sandbox
+- Browser je kontroliran preko processa u nadzornom stablu aplikacije
+- Prednosti
+  - jednostavan setup
+	- sve je i dalje elixir
+- Nedostaci
+	- javascript++ -> lakoća korištenja--
+	- frontend mora biti dio phoenix aplikacije</script></section><section  data-markdown><script type="text/template">## Što ako je frontend drugi repo?
+- Moguće!</script></section><section  data-markdown><script type="text/template">## Phoenix.Ecto.SQL.Sandbox
+
+> A plug to allow concurrent, transactional acceptance tests with 
+> `Ecto.Adapters.SQL.Sandbox`
+
+- `POST /sandbox`
+  - izvrši checkout Ecto sandbox procesa
+  - vrati sandbox id kao `term_to_binary`
+- `DELETE /sandbox { id }`
+  - izvrši checkin procesa s navedenim id-em
+- Između
+  - svaki zahtjev koji u headeru ima sandbox id postaje dio sandbox procesa</script></section><section  data-markdown><script type="text/template">## Phoenix.Ecto.SQL.Sandbox
+
+**U Praksi**
+
+- imamo frontend app, npr React ili Vue.js
+- imamo neki e2e framework, Cypress, Playwright
+- u `beforeEach` -> sandbox checkout
+- u sve zahtjeve na backend, dodaje se sandbox header
+- u `afterEach` -> sandbox checkin
+
+**Rezultat**: test se izvršava u izoliranoj transakciji</script></section><section  data-markdown><script type="text/template">## Ključna pitanja
+
+**Kako E2E framework modificira mrežne zahtjeve?**
+
+- Cypress -> `cy.intercept` (ili nekad, `cy.server`)
+- Playwright -> `page.setExtraHTTPHeaders`
+- Testcafe -> `RequestHook`
+
+**Što kad framework to ne može?**
+
+- Potrebna modifikacija koda frontend aplikacije
+- generiraj sandbox id
+- spremi u cookie, local storage, etc.
+- glavni API klijent aplikacije dodaje sandbox id u headere</script></section><section  data-markdown><script type="text/template">## Što još možemo
+
+**E2E ex_machina**
+
+- `POST /api/test/insert`
+- `POST /api/test/insert_list`
+
+```typescript
+it('lists todos', () => {
+  cy.create('user', {}).then(user => {
+    cy.create('todo', { user, title: 'Buy Milk' });
+    cy.create('todo', { user, title: 'Write Homework' });
+    cy.login(user);
+  });
+
+  cy.url().should('not.contain', 'login');
+
+  cy.contains('Buy Milk');
+  cy.contains('Write Homework');
+});
+```</script></section><section  data-markdown><script type="text/template"><div class="centered" markdown="1">
+  <h1>DEMO!</h1>
+</div></script></section><section  data-markdown><script type="text/template"><div class="centered" markdown="1">
+  <h1>Hvala!</h1>
+  <h2>Pitanja?</h2>
+</div></script></section></div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+</html>

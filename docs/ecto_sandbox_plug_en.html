@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Ecto Sandbox Plug</title>
+    <title>Ecto Sandbox Plug (English)</title>
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="stylesheet" href="./dist/reset.css" />
     <link rel="stylesheet" href="./dist/reveal.css" />
@@ -23,8 +23,8 @@
   <h3>Bego Solutions</h3>
 </div>
 </script></section><section  data-markdown><script type="text/template">## DataCase -> ConnCase
-- brzi integracijski testovi
-- izolirani
+- fast integration tests
+- isolated
 
 ```elixir
 def setup_sandbox(tags) do
@@ -38,51 +38,51 @@ def setup_sandbox(tags) do
   :ok
 end
 ```
-</script></section><section  data-markdown><script type="text/template">## Phoenix E2E testovi
-- Hound ili Wallaby
-- Također sandbox
-- Browser je kontroliran preko processa u nadzornom stablu aplikacije
-- Prednosti
-  - jednostavan setup
-	- sve je i dalje elixir
-- Nedostaci
-	- javascript++ -> lakoća korištenja--
-	- frontend mora biti dio phoenix aplikacije</script></section><section  data-markdown><script type="text/template">## Što ako je frontend drugi repo?
+</script></section><section  data-markdown><script type="text/template">## Phoenix E2E tests
+- Hound or Wallaby
+- Also sandbox
+- The browser is controlled by a process in the application supervisor
+- Advantages
+  - simple setup
+	- everything is still elixir
+- Disadvantages
+	- javascript++ -> ease of use--
+	- the frontend has to be part of the phoenix app</script></section><section  data-markdown><script type="text/template">## What if frontend is a separate repo?
 - Moguće!</script></section><section  data-markdown><script type="text/template">## Phoenix.Ecto.SQL.Sandbox
 
 > A plug to allow concurrent, transactional acceptance tests with 
 > `Ecto.Adapters.SQL.Sandbox`
 
 - `POST /sandbox`
-  - izvrši checkout Ecto sandbox procesa
-  - vrati sandbox id kao `term_to_binary`
+  - checks out an Ecto sandbox process
+  - returns sandbox id using `term_to_binary`
 - `DELETE /sandbox { id }`
-  - izvrši checkin procesa s navedenim id-em
-- Između
-  - svaki zahtjev koji u headeru ima sandbox id postaje dio sandbox procesa</script></section><section  data-markdown><script type="text/template">## Phoenix.Ecto.SQL.Sandbox
+  - chesk in sandbox process under specified id
+- Between
+  - each request with a sandbox id in header becomes part of sandbox process</script></section><section  data-markdown><script type="text/template">## Phoenix.Ecto.SQL.Sandbox
 
-**U Praksi**
+**In practice**
 
-- imamo frontend app, npr React ili Vue.js
-- imamo neki e2e framework, Cypress, Playwright
-- u `beforeEach` -> sandbox checkout
-- u sve zahtjeve na backend, dodaje se sandbox header
-- u `afterEach` -> sandbox checkin
+- we have a frontend app, for example React or Vue.js
+- we have some e2e framework; Cypress, Playwright
+- in `beforeEach` -> sandbox checkout
+- all backend requests get a sandbox header
+- in `afterEach` -> sandbox checkin
 
-**Rezultat**: test se izvršava u izoliranoj transakciji</script></section><section  data-markdown><script type="text/template">## Ključna pitanja
+**Result**: the test is executing in a sandboxed transaction</script></section><section  data-markdown><script type="text/template">## Key questions
 
-**Kako E2E framework modificira mrežne zahtjeve?**
+**How does the E2E framework modify network requests?**
 
-- Cypress -> `cy.intercept` (ili nekad, `cy.server`)
+- Cypress -> `cy.intercept` (or previously, `cy.server`)
 - Playwright -> `page.setExtraHTTPHeaders`
 - Testcafe -> `RequestHook`
 
-**Što kad framework to ne može?**
+**What to do when the framework can't modify requests?**
 
-- Potrebna modifikacija koda frontend aplikacije
-- generiraj sandbox id
-- spremi u cookie, local storage, etc.
-- glavni API klijent aplikacije dodaje sandbox id u headere</script></section><section  data-markdown><script type="text/template">## Što još možemo
+- Frontend application code modification is necessary
+- generate a sandbox id
+- store in browser cookie, local storage, etc.
+- application api client reads sandbox id, adds to requests</script></section><section  data-markdown><script type="text/template">## What else can we do
 
 **E2E ex_machina**
 
@@ -105,8 +105,8 @@ it('lists todos', () => {
 ```</script></section><section  data-markdown><script type="text/template"><div class="centered" markdown="1">
   <h1>DEMO!</h1>
 </div></script></section><section  data-markdown><script type="text/template"><div class="centered" markdown="1">
-  <h1>Hvala!</h1>
-  <h2>Pitanja?</h2>
+  <h1>Thank you!</h1>
+  <h2>Questions?</h2>
 </div></script></section></div>
     </div>
 

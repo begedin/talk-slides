@@ -1,5 +1,5 @@
 ---
-title: Ecto Sandbox Plug
+title: Ecto Sandbox Plug (Hrvatski)
 css: [theme.css]
 
 ---
