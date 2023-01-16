@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A collection of slideshows in reveal.js used in conference and meet-up talks",
   "scripts": {
-    "publish": "reveal-md slides/ --static published"
+    "publish": "reveal-md slides/ --static docs"
   },
   "repository": {
     "type": "git",
