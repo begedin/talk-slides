@@ -1,0 +1,26 @@
+{
+  "name": "talk-slides",
+  "version": "1.0.0",
+  "description": "A collection of slideshows in reveal.js used in conference and meet-up talks",
+  "scripts": {
+    "publish": "reveal-md slides/ --static published"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/begedin/talk-slides.git"
+  },
+  "keywords": [
+    "slides",
+    "talks",
+    "reveal.js"
+  ],
+  "author": "Nikola Begedin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/begedin/talk-slides/issues"
+  },
+  "homepage": "https://github.com/begedin/talk-slides#readme",
+  "devDependencies": {
+    "reveal-md": "^5.4.0"
+  }
+}

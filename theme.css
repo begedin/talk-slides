@@ -1,0 +1,34 @@
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal ul,
+.reveal section {
+  text-align: left;
+}
+
+.reveal blockquote {
+  margin: 1em 0;
+  background: transparent;
+  padding-left: 1em;
+  border-left: 2px solid white;
+}
+
+.reveal {
+  font-size: 1.2em;
+}
+
+.reveal pre {
+  width: auto;
+  font-size: 1.2em;
+}
+
+.reveal code {
+  color: orange;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: center;
+}
