@@ -8,7 +8,8 @@ css: [theme.css]
   <h2>Nikola Begedin</h2>
   <h3>Bego Solutions</h3>
 </div>
-
+Note:
+Danas ćemo pričati o ecto sandboxu u e2e testovima.
 ---
 ## DataCase -> ConnCase
 - brzi integracijski testovi
@@ -26,6 +27,16 @@ def setup_sandbox(tags) do
   :ok
 end
 ```
+Note:
+Da malo preciziramo, pretpostavljam da dosta ljudi ovdje pište testove u elixiru
+i dobar tih testova je na nekakvoj integracijskoj razini. Znači, nisu unit
+testovi, nego nerijetko prolaze kroz vise slojeva podataka, uključujući bazu
+podataka.
+
+A ipak možemo tisuce njih odvrtiti u manje od minute. Ecto Sandbox igra veliku
+ulogu u tome. Kao i sve ostalo, test je process, koji se spoji sa sandbox
+processom, koji je omotan oko transakcijske konekcije na bazu. Znači, cijeli
+test se vrti u izoliranoj transakciji.
 
 ---
 ## Phoenix E2E testovi
@@ -38,9 +49,30 @@ end
 - Nedostaci
 	- javascript++ -> lakoća korištenja--
 	- frontend mora biti dio phoenix aplikacije
+
+Note:
+
+E2E testovi u elixiru mogu koristiti istu stvar. Ako uzmemo hound ili wallaby, s
+minimalno konfiguracije imamo okruženje gdje se test vrti u browseru i testira
+cijelu vertikalu aplikacije.
+
+Konfiguracija je u praksi stvarno jednostavna i veliki je bonus što smo i dalje
+u elixiru, ali naravno, kad krenu netipične stvaro, malo više interakcije na
+frontendu, malo jači js, nailazimo na probleme.
+
+Dodatno, da bi koristili hound ili wallaby, očekivanje je da je frontend dio
+phoenix aplikacije i repozitorija.
 ---
 ## Što ako je frontend drugi repo?
 - Moguće!
+
+Note:
+
+Što ako je frontend odvoji repo. Tipično, phoenix je api, a koristimo neku SPA,
+tipa React ili Vue.
+
+Tu smo na fokusu ove prezentacije. Rijetko nailazim na timove koji koriste ovu
+opciju, ali sandboxed testovi u ovakvoj situaciji su mogući!
 ---
 ## Phoenix.Ecto.SQL.Sandbox
 
@@ -54,6 +86,26 @@ end
   - izvrši checkin procesa s navedenim id-em
 - Između
   - svaki zahtjev koji u headeru ima sandbox id postaje dio sandbox procesa
+
+Note:
+
+Kako? Koristeći `Phoenix.Ecto.SQL.Sandbox` plug definiran u `phoenix_ecto` libraryu
+
+Kako to u praksi funkcionira?
+
+Znači, ovo je plug, kao i svaki drugi. Ako ga dodamo u naš endpoint, a namjenjen
+je da bude dodan samo u nekim okolinama, tipa test, ili posedna e2e okolina,
+naš api dobiva dva nova endpointa na specifičnoj putanji.
+
+Jedan je POST, drugi DELETE. Kad trebamo sandbox okolinu, saljemo zahtjev na POST
+endpoint. Ovo napravi čekout sandbox procesa i vraća nam ID.
+
+Ako isti taj id šaljemo na DELETE endpoint, sandbox se zatvori. Isto tako,
+ako prođe po defaultu 15 sekundi, sandbox se isto zatvori.
+
+Dok je sandbox otvoren i imamo ID, ako taj ID šaljemo kao dio bilo kojeg
+requesta na API, plug će proces koji taj proces hendla automatski spojiti u
+sandbox process.
 ---
 ## Phoenix.Ecto.SQL.Sandbox
 
@@ -66,6 +118,17 @@ end
 - u `afterEach` -> sandbox checkin
 
 **Rezultat**: test se izvršava u izoliranoj transakciji
+
+Note:
+
+Efektivno u praksi, imamo skoro istu situaciju kao u integracijskim testovima.
+
+Imamo neki frontend app, ili čak destkop aplikaciju.
+Imamo neki e2e framework, tipa cypress
+U beforeEach napravimo checkout
+Konfiguriramo e2e framework da presreće i modificira sve zahtjeve prema backendu
+U testu imamo izoliranu transakciju
+A u after each napravimo checkin sandboxa
 ---
 ## Ključna pitanja
 
@@ -81,8 +144,28 @@ end
 - generiraj sandbox id
 - spremi u cookie, local storage, etc.
 - glavni API klijent aplikacije dodaje sandbox id u headere
+
+NOTE:
+
+Znači, ovo se može napraviti manje-više bilo gdje. Da bi smo dobili što želimo,
+zapravo samo trebamo odgovoriti na ključno pitanje - može li naš e2e framework
+modificirati zahtjeve na backend i kako?
+
+Popularni moderni mogu.
+
+Za one koji ne mogu, još uvijek ima načina. Ako framework i ne može modificirati
+zahtjeve, moža može dodati cookie u browser u kojem se test vrti. Ili nešto u
+local storage.
+
+Ako ne to, možda može izvršiti neki custom js prilikom otvaranja stranice.
+
+Ako napravimo nešto od toga, onda moramo modificirati kod frontend aplikacije da
+potraži sandbox ID koji nam je framework na jedan od ovih načina dostavio i sam
+modificira svoje zahtjeve.
+
+Nije najčišća opcija, ali dostupna je i funkcionira.
 ---
-## Što još možemo
+## Bonus: Što još možemo
 
 **E2E ex_machina**
 
@@ -102,11 +185,38 @@ it('lists todos', () => {
   cy.contains('Buy Milk');
   cy.contains('Write Homework');
 });
+
+Note:
+
+Naravno izolirani testovi nisu jedina stvar koja je korisna odvdje.
+Za one koji su naviknuti koristiti factory funkcije za setup testova, tipa
+ex_machina library, bilo bi zgodno da možemo i to s frontenda.
+
+Naravno, moguće je Samo napišemo svoj plug, po istom principu kao sandbox plug,
+koji doda endpointe za factory funkcije.
+
+Ovo sam pokušao par puta, ali u posljednje vrijeme preferiram oslonjavati se na
+postojeće funkcije aplikacije za setup testova.
+
 ```
 ---
 <div class="centered" markdown="1">
   <h1>DEMO!</h1>
+  <h2>https://github.com/begedin/e2e-recipes</h1>
 </div>
+
+Note:
+
+Al dobro, sve smo to rekli, imam i nešto koda za pokazati.
+
+Zapravo sam nešto opsežniju prezentaciju imao na jednoj konferenciji, tako da
+imam repozitorij s "receptima" kako ovakve stvari izvesti u nekoliko frameworka
+s kojima sam imao dodira.
+
+Ako ste za interesirani za dodavanje svoji recepata, ili imate druge ideje,
+slobodno se javiti.
+
+Al idemo to otvoriti i pokazati kako neke stari funkcioniraju.
 ---
 <div class="centered" markdown="1">
   <h1>Hvala!</h1>
