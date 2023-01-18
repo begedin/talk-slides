@@ -185,6 +185,7 @@ it('lists todos', () => {
   cy.contains('Buy Milk');
   cy.contains('Write Homework');
 });
+```
 
 Note:
 
