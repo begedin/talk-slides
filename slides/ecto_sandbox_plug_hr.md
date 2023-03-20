@@ -198,8 +198,27 @@ koji doda endpointe za factory funkcije.
 
 Ovo sam pokušao par puta, ali u posljednje vrijeme preferiram oslonjavati se na
 postojeće funkcije aplikacije za setup testova.
+---
+## Bonus: Što još možemo 2
 
-```
+**Prisilni sandbox**
+
+Note:
+
+Za ovaj slide nisam bio siguran dali da ga upće stavljam, jer mislim
+da ovo nije potrebno.
+
+Znači, ovaj plug nam daje ove endpointove na raspolaganje, ali ništo nas ne spriječava da zahtjeve šaljemo bez sandbox id-a. U tom slučaju,
+zahtjevi rade stvarne promjene u bazi, pa smo prisiljeni zaustaviti sve
+i resetirati bazu.
+
+Da bi se ovo izbjeglo, možemo dodati plug koji baca grešku ako SVAKI
+zahtjev osim onog za kreiranje sandbox id-a sadrži sandbox id header.
+
+Ponavljam, mislim da ovo nije potrebno i ionako ne izbjegava problem u potpunosti, jer ako sandbox napravi timeout, ista stvar se ponovno
+dogodi, ali moguće je i ovo.
+
+Ako se e2e framework dobro podesi, ovo jednostavno prestane biti problem.
 ---
 <div class="centered" markdown="1">
   <h1>DEMO!</h1>
