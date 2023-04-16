@@ -274,7 +274,35 @@ I'll explain in a few slides.
 
 # Execution: Conversions
 
-TODO
+- @Prop -> defineProps
+- class field -> ref
+- class getter -> computed
+- class function -> function
+- readonly/static values -> plain values, non-reactive
+
+- vuex
+  - @State -> computed
+  - @Getter -> computed or function
+  - @Mutation -> function
+  - @Action -> function
+  - preferably a pinia wrapper for all of them
+
+Note:
+
+How vuex class stuff maps to options API is basically just a dictionary, so it
+remains a similar dictionary for composition API, that I don't have to go in.
+
+The maybe not immediately obvious parts is that any data that doesn't change,
+is readonly or static in some way, now doesn't even have to be a reactive ref.
+It can be just a plain non-reactive value, possibly imported from somewhere
+and directly used.
+
+When we get to vuex class decorators, we made a decision to keep it simple, and
+map all of it to computeds or functions. Ideally, against a pinia proxy.
+
+But even so, for now, all of this is just a dictionary. The important stuff is
+learnign the tricks, caveats and dangers as we go, so there will be more of that
+in a few slides.
 
 ---
 
@@ -288,7 +316,7 @@ const teamsStore = defineStore('teams', () => {
   const vuexStore = useVuexStore()
 
   // getter proxies to vuex state
-  const allTeams = computed(() => vuextStore.state.teams.allTeams)
+  const allTeams = computed(() => vuexStore.state.teams.allTeams)
 
   // action proxies to vuex mutation
   const setTeams = (teams) => store.commit('teams/SET_TEAMS', teams)
@@ -306,10 +334,11 @@ const teamsStore = defineStore('teams', () => {
 
 Note:
 
-Once we're done with the easy components, it's time to think about how to switch
-from vuex to pinia, in parallel with all of these conversions.
+Once we're done with executing on components, it's time to think about how to
+execute on the switch from vuex to pinia, in parallel with all of these
+component conversions.
 
-Now, this one specifically, I really personally like. We've developed this way
+What we did here specifically, I really personally like. We've developed this way
 to wrap a pinia store around a collection of vuex actions, getters, mutations
 and state.
 
