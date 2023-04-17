@@ -19,17 +19,17 @@ My name is Nikola.
 I own Bego Solutions, which is a sole proprietorship, and my
 primary client for the past 4 years was V7.
 
-I've been working with their
-engineering team, building a computer vision/machine learning product together.
+I've been working with their engineering team,
+building a machine learning product together.
 
-It's a huge codebase and it was built in Vue 2, so towards the end of last year,
-we decided
+Today, I'm going to talk about our approach of migrating to Vue3.
+
 ---
 
 # What this isn't
 
 - a success story (still WIP)
-- a brag on how fast we did (still WIP!)
+- a brag on how fast we did it (still WIP!)
 - a how-to
 
 Note:
@@ -52,7 +52,9 @@ probably work differently.
 - sharing knowledge and strategy
 
 Note: What this is, however, is us sharing what we've learned, what our strategy
-was and how it worked it. I'm not really sure if it's going to be useful, but
+was and how it worked out for us specifically.
+
+I'm not really sure if it's going to be useful, but
 hopefully it will be interesting.
 
 ---
@@ -60,7 +62,9 @@ hopefully it will be interesting.
 # What kind of app do we have
 
 - one huge frontend monolith
-- several core product features
+- parts that look like spa - dataset management, account management
+- parts that look like whimsical - workflow editor
+- parts that look like photoshop - annotation UI
 - ~1000 components total
 - 1 major subsystem in the middle of a rewrite
   - 20-30% of components due to be deleted
@@ -72,17 +76,17 @@ Note:
 Let's brefly talk about v7's product. It's a computer vision platform, aiming to
 become a general AI platform.
 
-It's one huge frontend monolith, with several core product features. Some of
-them look like typical single page applications, but we also have a workflow
-editor, which kind of looks like what you would see in whimsical, and we have
-an annotation tool, which is revolving around the html canvas.
+It's one huge frontend monolith, with several different parts.
+
+We have parts that are your typical single page application, a part that look like whimsical, dealing with a lot of custom DOM stuff, and then a part that
+looks like a customised version of photoshop - our annotation UI
 
 There are about 1000 components in total, but to be fair, we have one major
 subsystem nearing the end of a major rewrite. We have a v1 codebase and a v2
 codebase, and the v1 codebase is being phased out, hopefully, by end od July
 this year.
 
-That means, at that point, we get to drop about 20-30% of those 1000 components.
+That means, at that point, we get to drop about 20% of those 1000 components, so it's not exactly 1000, but converting those is also not exactly off the table.
 
 ---
 
@@ -133,9 +137,9 @@ switching away from those in favor of the standard composition API.
 
 # TODO
 
-- migrate all the components we're keeping
+- migrate all the components we're keeping (and maybe a few more)
 - vuex to pinia
-- storybook to vite
+- app and storybook to vite
 - jest to vitest
 
 Note:
@@ -152,35 +156,39 @@ and vitest.
 
 # Strategy
 
-## Observation
-
-- single big effort will create bugs, issues, delay feature work and won't directly benefit customers
-  - indirect benefit is not as easy to justify
-
-## Conclusion
-
-- the process needs to be beneficial, not just the goal
-- the process needs to be non-discruptive
-  - 1 engineer converts 2 components in a sprint (2 weeks)
-    - timeboxed to 2 hours per component
-    - if it takes more than 2 hours per component, drop it and grab the next one
-  - we ramp up as we get experience
+- single big effort will is bad idea
+  - will still take weeks
+  - guaranteed bugs
+  - too many delays in product work
+- the process needs to be
+  - beneficial as we go, not just at the end
+  - non-discruptive
 
 Note:
 
 So we need a strategy.
 
-We really thought hard about this and to us, it seemed like it's not worth the
-effort to do one big push to migrate. It will take weeks, regular features will
-be delayed, there will be bugs for sure and it will be difficult to justify the
-indirect benefit to customers, no matter how big.
+To us, it really didn't look like trying to do it all in one big push is a good idea. It would stillt ake weeks, delay a bunch of other things, introduce who knows how many bugs. Just a bad idea overall.
 
-SO we concluded we should do it in a more consistent, safer way.
+We wanted to do it in a safer way.
 
-The process needs to be beneficial as we go, not just end goal. It also needs to
-be as undistruptive as possible.
+The process needs to be beneficial as we go, not just something with an end
+goal. It also needs to be as undistruptive as possible.
 
-We decided, every sprint, which is 2 weeks from now, one engineer would take 2
+---
+
+# Strategy: Basic approach
+
+- 1 engineer converts 2 components in a sprint (2 weeks)
+  - timeboxed to 2 hours per component
+  - if it takes more than 2 hours, drop the ticket and grab the next one
+- we ramp up as we get experience
+- we revisit dropped tickets as we know more
+- all new code is composition API
+
+Note:
+
+We decided, every sprint, which is 2 weeks, one engineer would take 2
 components to convert. This is timeboxed to 2 hours per component, so if any
 takes longer, put that ticket on hold, try and document the problem and move to
 the next one.
@@ -193,11 +201,16 @@ convert a component, and we can ramp up.
 
 # Strategy: Selecting components
 
-- align with product - migrate components about to be touched by feature work beforehand
-- migrate components interacting with the same vuex module
-- migrate components around a specific feature of the product
-- create independent islands of migrated components
-- build up knowledge, learn about caveats, document, share and educate to speed up
+- align with product
+  - migrate components about to be touched by feature work
+- create migrated islands
+  - components interacting with the same vuex module
+  - components around a specific area of the product
+- mantra: build up knowledge
+  - learn about caveats
+  - document
+  - share and educate
+  - speed up everyone
 
 Note:
 
@@ -225,14 +238,16 @@ all get faster.
 
 # Strategy: Effects
 
-- every small change is beneficial
+- as we go, we get
   - better type safety
   - less boiler plate
-  - reduction of bugs in specific categories
-  - overall improvement to quality, clarity and maintainability of code
-- we are auditing our codebase as a side-effect
+  - reduction in bugs count
+  - speedup in feature work
+  - knowledge of more things we can do
+- the codebase gets audited
   - finding unused code
   - adding missing documentation (we were a startup)
+  - adding missing tests (we were a startup!)
 
 Note:
 
@@ -251,7 +266,7 @@ ask for documentation in our code reviews.
 
 # Execution: Easy parts
 
-- delay migrating that 20-30% components
+- delay migrating that 20% of V1 components
   - but don't take it off the table
 - more than 100 components look like this:
 
@@ -282,35 +297,26 @@ I'll explain in a few slides.
 
 # Execution: Conversions
 
-- @Prop -> defineProps
-- class field -> ref
-- class getter -> computed
+- `@Prop` -> `defineProps`
+- class field -> `ref`
+- class getter -> `computed`
 - class function -> function
 - readonly/static values -> plain values, non-reactive
 
 - vuex
-  - @State -> computed
-  - @Getter -> computed or function
-  - @Mutation -> function
-  - @Action -> function
+  - `@State` -> `computed`
+  - `@Getter` -> `computed` or function
+  - `@Mutation` -> function
+  - `@Action` -> function
   - preferably a pinia wrapper for all of them
 
 Note:
 
-How vuex class stuff maps to options API is basically just a dictionary, so it
-remains a similar dictionary for composition API, that I don't have to go in.
+Generally, a conversion is just a mapping of what becomes what, so we don't
+realy need to go in detail there.
 
-The maybe not immediately obvious parts is that any data that doesn't change,
-is readonly or static in some way, now doesn't even have to be a reactive ref.
-It can be just a plain non-reactive value, possibly imported from somewhere
-and directly used.
-
-When we get to vuex class decorators, we made a decision to keep it simple, and
-map all of it to computeds or functions. Ideally, against a pinia proxy.
-
-But even so, for now, all of this is just a dictionary. The important stuff is
-learnign the tricks, caveats and dangers as we go, so there will be more of that
-in a few slides.
+The actual component conversion is just a lot of labor, but it's not
+highly skilled labor. Distilling the experience of doing that into knowledge is.
 
 ---
 
@@ -324,13 +330,13 @@ const teamsStore = defineStore('teams', () => {
   const vuexStore = useVuexStore()
 
   // getter proxies to vuex state
-  const allTeams = computed(() => vuexStore.state.teams.allTeams)
+  const allTeams = computed(() => vuexStore.state.team.allTeams)
 
   // action proxies to vuex mutation
-  const setTeams = (teams) => store.commit('teams/SET_TEAMS', teams)
+  const setTeams = (teams: Team[]) => store.commit('team/SET_TEAMS', teams)
 
   // actions proxies to vuex action
-  const loadTeams = () => store.dispatch('teams/loadTeams')
+  const loadTeams = () => store.dispatch('team/loadTeams')
 
   return {
     allTeams,
@@ -342,18 +348,18 @@ const teamsStore = defineStore('teams', () => {
 
 Note:
 
-Once we're done with executing on components, it's time to think about how to
-execute on the switch from vuex to pinia, in parallel with all of these
-component conversions.
+So instead of component conversion, I'm gonna talk about something more
+interesting to me, which is our strategy of moving from vuex to pinia safely.
 
-What we did here specifically, I really personally like. We've developed this way
-to wrap a pinia store around a collection of vuex actions, getters, mutations
-and state.
+I really like this one.
+
+We've developed this way to wrap a pinia store around a collection of vuex
+actions, getters, mutations and state.
 
 Basically, we create a pinia store which, rather than having it's own state, is
 a proxy to vuex.
 
-Vuex state and getters are proxied to via plain vue computeds, which in turn
+Vuex state and getters are proxied to via plain computeds, which in turn
 effectively become pinia getters.
 
 Vuex actions and mutations are proxied by functions, which become pinia actions.
@@ -370,9 +376,10 @@ accessed as any other pinia store, but from the inside, it's just a proxy.
 
 ## Extra benefits
 
-- we can directly type the pinias store (vuex has only indirect typing)
+- pinia store is fully typed (vuex has only indirect typing)
 - we can document better
 - we can fragment into smaller, more focused stores
+  - doesn't have to be 1 module -> 1 pinia store
 - extremely low risk
 
 Note:
@@ -406,14 +413,13 @@ And again, this is all extremely low risk.
 - can be used for storybook
 - can be used for Preview.js
 
-## Identify requirements
+## Identify blockers
 
 - `process.env` -> `import.meta.env`
-  - we can make it forwards or backwards compatible via define plugin
+  - we can make it compatible via define plugin
 - custom loaders
   - eliminate or reimplement (not that hard)
 - commonjs usage (`require`, `module.exports`) - eliminate
-- test migration recipes
 
 Happily using it!
 
@@ -449,7 +455,7 @@ So we now hapilly use a vite config alongside our webpack config.
 
 ---
 
-# Execution: Identified problems
+# Execution: Problems
 
 - `@vue/test-utils` render anonymous stubs for script setup components
   - add an extra, non-setup block with just the name
@@ -476,11 +482,13 @@ currently not perfectly sorted, but there's a fix on the way.
 
 ---
 
-# Execution: Identified problems
+# Execution: Problems
 
 - wrapping `$store`, `$router`, `$route` into composables
 
 ```typescript
+import { getCurrentInstance } from 'vue'
+
 export const useStore = (): Store<RootState> => {
   const vm = getCurrentInstance()
   if (!vm) {
@@ -566,17 +574,16 @@ We've effectively sped up and improved typechecking at the same time.
 
 ---
 
-# Report: Where are we?
+# Results: Where are we?
 
 - ~ 400 components remaining
   - haven't dropped the v1 subsystem yet, so likely closer to around ~200
-- 2/10 vuex modules eliminaed
+- 2/10 vuex modules eliminated
 - several pinia proxies in place
-- tests 4x faster
-- component migration expected to be done during summer
-- full switch to vite expected early fall
-- full switch to vue3 expected mid-fall
-- full switch to vitest expected late-fall
+- tests 4x faster - 5000 tests 10 mins -> 2.5 mins
+- build time 3x faster - 90 secs -> 30 secs on first run
+- less code
+- less bugs
 - product work effectively unaffected
 
 Note:
@@ -588,8 +595,6 @@ Once we drop v1, we expect to drop about 200.
 
 We've eliminated 2 out of 10 or so vuex modules. We have several pinia proxies
 in place to eliminate more.
-
-
 
 We eexpect to be done with pure component migration during sommer and then expect
 a full switch to vite early fall.
@@ -604,54 +609,7 @@ potentially sped up.
 
 ---
 
-# Outcome: Nice side-effects
-
-- smaller codebase
-  - compositon api is less boilerplate
-  - code deduplication
-  - tracking down unused code
-- less bugs overall
-  - some categories of bugs are eliminated
-    - using vuex with incorrect payloads
-  - actual bugs being found and fixed during migrations
-  - tests getting better coverage
-- much faster build time than we started
-- much faster test suite
-
-Note: What did we get out of it
-
-A smaller codebase. We went down from about 360000 lines to a few thousand less
-than that, but with more features built along the way.
-
-There's less boiler plate. It's easier to duplicate code better, it's easier to
-document it better.
-
-There's better type safety, serving both as improved resistance to bugs and
-an extra bit of self-documenting.
-
-Our tests run about 4x faster and we have more of them than before.
-
-Our dev build runs from what used to be about 90 seconds, to about 20 seconds on
-dry run, followed by about 10 on restarts. Rebuilds after a code change are back
-to taking just a few seconds, in spite of the size of the coodebase.
-
----
-
 # What we learned
-
-- it's a lot of work
-  - but you get faster as you get more experienced
-- it's benefical as you go, not only at the end
-
-Note:
-
-What we larned is that this is a lot of work, but it's beneficial and we get
-faster as we go. It's actually kind of fun. We're considering conversion
-tournaments with prizes.
-
----
-
-# What we learned: Practically speaking
 
 - pinia proxies are great for gradual elimination of vuex
 - `toRef` is your friend for passing props and store values into composables
@@ -680,6 +638,16 @@ but assertions on html content are great.
 We've learned that @vueuse will cover 90% of your needs.
 
 And we're still learning.
+
+---
+
+# Estimates
+
+- components late summer
+- pinia short time after
+- full move to vite early fall
+- full move to vue3 mid-fall
+- full move to vitest late-fall
 
 ---
 <div class="centered" markdown="1">
