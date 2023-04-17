@@ -13,6 +13,11 @@
   border-left: 2px solid white;
 }
 
+.reveal ul {
+  vertical-align: top;
+  margin-right: 1em;
+}
+
 .reveal {
   font-size: 1.2em;
 }

@@ -1,6 +1,8 @@
 ---
 title: Ecto Sandbox Plug (English)
 css: [theme.css]
+revealOptions:
+  autoPlayMedia: true
 
 ---
 <div class="centered" markdown="1">
@@ -63,6 +65,8 @@ hopefully it will be interesting.
 - 1 major subsystem in the middle of a rewrite
   - 20-30% of components due to be deleted
 
+<iframe height="400" width="700" data-src="https://www.youtube.com/embed/F-DMAN8gbjk?autoplay=1&controls=0&mute=1"></iframe>
+
 Note:
 
 Let's brefly talk about v7's product. It's a computer vision platform, aiming to
@@ -88,8 +92,12 @@ That means, at that point, we get to drop about 20-30% of those 1000 components.
 - vuex
 - vue class components
 - vuex class
-- jest + @vue/test-utils ()
+- jest + @vue/test-utils
 - storybook
+
+
+
+<iframe height="400" width="700" data-src="https://www.youtube.com/embed/F-DMAN8gbjk?autoplay=1&controls=0&mute=1&time=45"></iframe>
 
 Note:
 
@@ -641,7 +649,9 @@ What we larned is that this is a lot of work, but it's beneficial and we get
 faster as we go. It's actually kind of fun. We're considering conversion
 tournaments with prizes.
 
-## What we learned: Practically speaking
+---
+
+# What we learned: Practically speaking
 
 - pinia proxies are great for gradual elimination of vuex
 - `toRef` is your friend for passing props and store values into composables
