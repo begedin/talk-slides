@@ -17,12 +17,13 @@ Hey everyone.
 My name is Nikola.
 
 I own Bego Solutions, which is a sole proprietorship, and my
-primary client for the past 4 years was V7.
+primary client for the past 4 years has been V7.
 
 I've been working with their engineering team,
-building a machine learning product together.
+building a very complex product together.
 
-Today, I'm going to talk about our approach of migrating to Vue3.
+For the past few months, we've been migrating the frontend part of it to Vue3,
+so that's what I'm gonna talk about.
 
 ---
 
@@ -49,7 +50,7 @@ probably work differently.
 
 # What this is
 
-- sharing knowledge and strategy
+- sharing of experience, knowledge and strategy
 
 Note: What this is, however, is us sharing what we've learned, what our strategy
 was and how it worked out for us specifically.
@@ -73,20 +74,22 @@ hopefully it will be interesting.
 
 Note:
 
-Let's brefly talk about v7's product. It's a computer vision platform, aiming to
-become a general AI platform.
+Let's brefly talk about v7's product. It started as a computer vision platform,
+but over time, it's becoming much, nuch more.
 
-It's one huge frontend monolith, with several different parts.
+Architecturally, it's one huge frontend monolith, with several backends
 
-We have parts that are your typical single page application, a part that look like whimsical, dealing with a lot of custom DOM stuff, and then a part that
-looks like a customised version of photoshop - our annotation UI
+On the frontend, we have parts that are your typical single page application,
+a part that look like whimsical, dealing with a lot of custom DOM stuff,
+and then a part that looks like a customised version of photoshop - our annotation UI
 
 There are about 1000 components in total, but to be fair, we have one major
 subsystem nearing the end of a major rewrite. We have a v1 codebase and a v2
 codebase, and the v1 codebase is being phased out, hopefully, by end od July
 this year.
 
-That means, at that point, we get to drop about 20% of those 1000 components, so it's not exactly 1000, but converting those is also not exactly off the table.
+So I did a bit of padding here, but not fully. I'll touch on that in one of the
+later slides.
 
 ---
 
@@ -272,7 +275,7 @@ ask for documentation in our code reviews.
 
 ```
 @Component({ name: 'my-component' })
-export default MyComponent extends Vue {}
+export default class MyComponent extends Vue {}
 ```
 
 - find and replace with
@@ -417,9 +420,9 @@ And again, this is all extremely low risk.
 
 - `process.env` -> `import.meta.env`
   - we can make it compatible via define plugin
+- commonjs usage (`require`, `module.exports`) - eliminate
 - custom loaders
   - eliminate or reimplement (not that hard)
-- commonjs usage (`require`, `module.exports`) - eliminate
 
 Happily using it!
 
