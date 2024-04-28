@@ -68,7 +68,7 @@ hopefully it will be interesting.
 - parts that look like photoshop - annotation UI
 - ~1000 components total
 - 1 major subsystem in the middle of a rewrite
-  - 20-30% of components due to be deleted
+  - 20% of components due to be deleted
 
 <iframe height="400" width="700" data-src="https://www.youtube.com/embed/F-DMAN8gbjk?autoplay=1&controls=0&mute=1"></iframe>
 
@@ -165,7 +165,7 @@ and vitest.
   - too many delays in product work
 - the process needs to be
   - beneficial as we go, not just at the end
-  - non-discruptive
+  - non-disruptive
 
 Note:
 
@@ -557,7 +557,7 @@ slow us down.
 - eliminating vue2-only libraries
   - mainly by replacing with `@vueuse`
 - started using `vue-tsc` for typechecking
-  - we can do isolatedModules in jest - faster
+  - we can do `isolatedModules` in jest - faster
   - we still get full type-checking, even better than plain `tsc`, in CI
 
 
@@ -581,7 +581,7 @@ We've effectively sped up and improved typechecking at the same time.
 
 - ~ 400 components remaining
   - haven't dropped the v1 subsystem yet, so likely closer to around ~200
-- 2/10 vuex modules eliminated
+- 2/12 vuex modules eliminated
 - several pinia proxies in place
 - tests 4x faster - 5000 tests 10 mins -> 2.5 mins
 - build time 3x faster - 90 secs -> 30 secs on first run

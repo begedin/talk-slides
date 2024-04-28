@@ -41,3 +41,19 @@
 .reveal h2 {
   margin-top: 1em;
 }
+
+.reveal .code-multi-part {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 1.2em;
+  background-color: #383838;
+}
+.reveal .code-multi-part pre.code-wrapper {
+  margin: 0;
+  box-shadow: none;
+}
+
+.reveal .code-multi-part pre.code-wrapper code {
+  padding: 0;
+}
