@@ -1,7 +1,10 @@
 ---
 title: Phoenix Live View
-css: [theme.css]
-
+theme: solarized
+css: ["theme.css"]
+mermaid: 
+  theme: "forest"
+template: "reveal-template-fixed-mermaid.html"
 ---
 <div class="centered" markdown="1">
   <h1>Phoenix Live View - SPA bez JS</h1>
@@ -50,7 +53,7 @@ fib_int(N, A, B) -> fib_int(N-1, B, A+B).
 - svi benefiti
 - ugodniji ux
 
-```Elixir
+```elixir xs
 defmodule Series do
   def fib(0), do: 0
   def fib(n) when n < 0, do: raise "Cannot pass negative value"
@@ -75,7 +78,7 @@ end
 
 <div class="code-multi-part">
 
-```elixir
+```elixir xs multipart
 ## fib_controller.ex
 def fib(conn, %{"n" => n}) do
   result = Series.fib(n)
@@ -88,7 +91,7 @@ attr(:result, :integer, required: true)
 def fib(assigns) do
   ~H"""
 ```
-```html
+```html multipart
   <UI.card>
     <p data-n={n} data-result={result}>
       The <%= n %>th fibonacci number is <%= result %>
@@ -96,7 +99,7 @@ def fib(assigns) do
   </UI.card>
   """
 ```
-```elixir
+```elixir multipart
 end
 ```
 </div>
@@ -110,11 +113,11 @@ end
 - interaktivni html preko websocketa
 - SPA-like razina interakcije
 ---
-# Kako funkcionira?
+# Kako izgleda?
 
 <div class="code-multi-part">
 
-```elixir
+```elixir xs multipart
 # items_live.ex
 def mount(_params, _session, socket) do
   items = Repo.all(Item)
@@ -126,7 +129,7 @@ def render(assigns) do
   ~H"""
 ```
 
-```html
+```html xs multipart
   <ul>
     <li :for={item <- @items}>
       <UI.row_layout>
@@ -137,10 +140,10 @@ def render(assigns) do
   </ul>
 ```
 
-```elixir
+```elixir xs multipart
   """
 ```
-```elixir
+```elixir xs multipart
 end
 
 def handle_event("delete", %{"id" => item_id}, socket) do
@@ -151,6 +154,33 @@ def handle_event("delete", %{"id" => item_id}, socket) do
 end
 ```
 </div>
+---
+# Kako funkcionira?
+
+```mermaid
+graph RL
+subgraph backend
+  A(LiveView Process)
+end
+subgraph frontend
+  B
+  U
+end
+A --render state--> A
+A --handle events--> A
+A --HTML diff--> B((Client/Browser))
+U((User)) <--interact--> B
+B --push events--> A
+```
+
+---
+# Pretpostavke
+
+- tailwind
+- esbuild
+- hero icons
+- core components
+
 ---
 
 # Zašto?
@@ -175,14 +205,14 @@ https://livepixel.fly.dev
 
 ## Latencija
 
-- svaka interakcija mora ye ws poruka gore i dolje
+- svaka interakcija je ws poruka gore i dolje
 - riješenje: ipak malo JS-a
 
 ---
 
 # Ipak malo JS-a
 
-## Phoenix.LiveView.JS modul
+## Phoenix.LiveView.JS
 
 ```elixir
 def hide_modal(js \\ %JS{}) do
@@ -242,15 +272,14 @@ let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, ...})
 | C# | Blazor | 2018 |
 | Elixir | PhoenixLiveView | 2019 |
 | PHP | Livewire | 2020 |
-| Ruby on rails (i drugi) | Turbo | 2021 |
+| Ruby on rails (i drugi) | Turbo/Hotwire | 2021 |
 | React | Next.js + Server Components | 2023 ? |
 
 - jedan od ranijih
 - jako lightweight
   - elixir backend
   - ws
-  - dom.js
-  - malo "ljepila"
+  - malo js "ljepila" ~4000 LOC
 
 ---
 
@@ -258,6 +287,7 @@ let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, ...})
 
 - možda za osobne projekte
 - moooožda za nove projekte
+- `live_view_native`
 
 ---
 <div class="centered">
