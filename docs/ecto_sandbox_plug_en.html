@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,17 +12,21 @@
     <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
 
     <link rel="stylesheet" href="./_assets/theme.css" />
-
   </head>
   <body>
     <div class="reveal">
-      <div class="slides"><section  data-markdown><script type="text/template">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
 <div class="centered" markdown="1">
   <h1>Ecto Sandbox Plug!</h1>
   <h2>Nikola Begedin</h2>
   <h3>Bego Solutions</h3>
 </div>
-</script></section><section  data-markdown><script type="text/template">## DataCase -> ConnCase
+
+---
+## DataCase -> ConnCase
 - fast integration tests
 - isolated
 
@@ -38,7 +42,9 @@ def setup_sandbox(tags) do
   :ok
 end
 ```
-</script></section><section  data-markdown><script type="text/template">## Phoenix E2E tests
+
+---
+## Phoenix E2E tests
 - Hound or Wallaby
 - Also sandbox
 - The browser is controlled by a process in the application supervisor
@@ -47,8 +53,12 @@ end
 	- everything is still elixir
 - Disadvantages
 	- javascript++ -> ease of use--
-	- the frontend has to be part of the phoenix app</script></section><section  data-markdown><script type="text/template">## What if frontend is a separate repo?
-- Moguće!</script></section><section  data-markdown><script type="text/template">## Phoenix.Ecto.SQL.Sandbox
+	- the frontend has to be part of the phoenix app
+---
+## What if frontend is a separate repo?
+- Moguće!
+---
+## Phoenix.Ecto.SQL.Sandbox
 
 > A plug to allow concurrent, transactional acceptance tests with 
 > `Ecto.Adapters.SQL.Sandbox`
@@ -59,7 +69,9 @@ end
 - `DELETE /sandbox { id }`
   - chesk in sandbox process under specified id
 - Between
-  - each request with a sandbox id in header becomes part of sandbox process</script></section><section  data-markdown><script type="text/template">## Phoenix.Ecto.SQL.Sandbox
+  - each request with a sandbox id in header becomes part of sandbox process
+---
+## Phoenix.Ecto.SQL.Sandbox
 
 **In practice**
 
@@ -69,7 +81,9 @@ end
 - all backend requests get a sandbox header
 - in `afterEach` -> sandbox checkin
 
-**Result**: the test is executing in a sandboxed transaction</script></section><section  data-markdown><script type="text/template">## Key questions
+**Result**: the test is executing in a sandboxed transaction
+---
+## Key questions
 
 **How does the E2E framework modify network requests?**
 
@@ -82,7 +96,9 @@ end
 - Frontend application code modification is necessary
 - generate a sandbox id
 - store in browser cookie, local storage, etc.
-- application api client reads sandbox id, adds to requests</script></section><section  data-markdown><script type="text/template">## What else can we do
+- application api client reads sandbox id, adds to requests
+---
+## What else can we do
 
 **E2E ex_machina**
 
@@ -102,15 +118,24 @@ it('lists todos', () => {
   cy.contains('Buy Milk');
   cy.contains('Write Homework');
 });
-```</script></section><section  data-markdown><script type="text/template"><div class="centered" markdown="1">
+```
+---
+<div class="centered" markdown="1">
   <h1>DEMO!</h1>
-</div></script></section><section  data-markdown><script type="text/template"><div class="centered" markdown="1">
+</div>
+---
+<div class="centered" markdown="1">
   <h1>Thank you!</h1>
   <h2>Questions?</h2>
-</div></script></section></div>
+</div>
+          </textarea>
+        </section>
+      </div>
     </div>
 
     <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
 
     <script src="./plugin/markdown/markdown.js"></script>
     <script src="./plugin/highlight/highlight.js"></script>
@@ -139,6 +164,9 @@ it('lists todos', () => {
         center: true,
         transition: 'default', // none/fade/slide/convex/concave/zoom
         slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
         plugins: [
           RevealMarkdown,
           RevealHighlight,
@@ -151,12 +179,26 @@ it('lists todos', () => {
       // options from URL query string
       var queryOptions = Reveal().getQueryHash() || {};
 
-      var options = extend(defaultOptions, {}, queryOptions);
+      var options = extend(defaultOptions, {"_":["slides/"],"static":"docs"}, queryOptions);
     </script>
 
 
     <script>
       Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
     </script>
   </body>
 </html>

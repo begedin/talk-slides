@@ -31,6 +31,10 @@
   color: orange;
 }
 
+code.xs {
+  font-size: 1em;
+}
+
 .centered {
   display: flex;
   flex-direction: column;
@@ -40,4 +44,27 @@
 .reveal h1:not(:first-child),
 .reveal h2 {
   margin-top: 1em;
+}
+
+.code-wrapper:has(code.multipart) {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 0 1.2em;
+  margin: 0;
+  background-color: #383838; 
+}
+
+.code-wrapper:has(code.multipart):first-of-type {
+  padding-top: 1.2em;  
+  margin-top: 1.2em;
+}
+
+.code-wrapper:has(code.multipart):last-of-type {
+  padding-bottom: 1.2em;  
+  margin-bottom: 1.2em;
+}
+
+code.multipart.hljs {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
 }

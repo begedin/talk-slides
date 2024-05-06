@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/begedin/talk-slides#readme",
   "devDependencies": {
-    "reveal-md": "^5.4.0"
+    "reveal-md": "^6.1.1"
+  },
+  "dependencies": {
+    "mermaid": "^10.9.0"
   }
 }

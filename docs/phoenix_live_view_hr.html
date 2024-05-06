@@ -1,0 +1,499 @@
+<!doctype html>
+<!-- fixed -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Phoenix Live View</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/solarized.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
+    <link rel="stylesheet" href="./_assets/theme.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
+<div class="centered" markdown="1">
+  <h1>Phoenix Live View - SPA bez JS</h1>
+  <h2>Nikola Begedin</h2>
+  <h3>Bego Solutions | <a>bego.dev</a>
+</div>
+Note:
+
+Pozdrav svima.
+Ja sam Nikola i imam d.o.o. jer su obrti postali riskantni :)
+
+Posljednjih 7 godina radim s Elixir backendom, a posljednjih 5 s Vue.js na frontendu.
+
+Ovo predavanje će u fokusu imati jedan manji dio jednog web frameworka u elixiru.
+---
+
+# Što je što?
+
+## erlang
+  - funkcijski jezik
+  - Erricson, 1986
+  - OTP (open telecom platform)
+  - VM
+  - Joe Armstrong, Robert Virding, Mike Williams
+
+```erlang
+-module(series).
+-export([fib/1]).
+%% public
+fib(0) -> 0;
+fib(N) when N < 0 -> err_neg_val;
+fib(N) when N < 3 -> 1;
+fib(N) -> fib_int(N, 0, 1).
+%% private
+fib_int(1, _, B) -> B;
+fib_int(N, A, B) -> fib_int(N-1, B, A+B).
+```
+Note: 
+Mislim da je fer pretpostaviti da većina ovdje nije upoznata s elixirom, pa ću, evo, iskoristit nekoliko slideova da objasnim što je što.
+Elixir je funkcijski jezik, napisan u erlang funkcijskom jeziku.
+Erlang je funkcijski jezik razvijen unutar erricsona prije nekoliko desetljeća. Htjeli su jezik koji je jako dobar za telefonske platforme. Znači, real time, brz, otporan na rušenja i jako, jako dobar za bilo kakve concurrent operacije.
+I u tome su uspjeli, ali, mnogima baš ne leži sto se tiče sintakse.
+Slično javi, radi na virtualnom stroju, kojeg nazivaju Beam. Kod se kompajlira u beam kod, koji onda erlang runtime system konvertira u bytecode. 
+---
+
+# Što je što?
+
+## Elixir
+
+- funkcijski jezik napisan u Erlangu + Elixiru
+- Jose Valim
+- svi benefiti
+- ugodniji ux
+
+```elixir xs
+defmodule Series do
+  def fib(0), do: 0
+  def fib(n) when n < 0, do: raise "Cannot pass negative value"
+  def fib(n) when n < 3, do: 1
+  def fib(n) do
+    fib(n, 0, 1)
+  end
+
+  defp fib(1, _, b), do: b
+  defp fib(n, a, b), do: fib(n-1, b, a+b)
+end
+```
+Note: 
+
+Elixir je isto funkcijski jezik, s ruby-like sintaksom, napisan u erlangu i elixiru. 
+Možda zvuči malo čudno, ali stvarno je tako. Osnovne funkcionalnosti su napisane u erlangu, a napredne u pravilu se svode na kombiniranje osnovnih.
+
+Ruby-like je s dobrim razlogom - Jose Valim, autor jezika je bio Ruby developer.
+---
+# Što je što?
+
+## Phoenix framework
+
+- THE web framework u elixiru
+- Chris McCord
+- html.eex templating jezik
+- podrška za komponente
+
+
+<div class="code-multi-part">
+
+```elixir xs multipart
+## fib_controller.ex
+def fib(conn, %{"n" => n}) do
+  result = Series.fib(n)
+  render(conn, :fib, %{n: n, result: result})
+end
+
+## fib_html.ex
+attr(:n, :integer, required: true)
+attr(:result, :integer, required: true)
+def fib(assigns) do
+  ~H"""
+```
+```html multipart
+  <UI.card>
+    <p data-n={n} data-result={result}>
+      The <%= n %>th fibonacci number is <%= result %>
+    </p>
+  </UI.card>
+  """
+```
+```elixir multipart
+end
+```
+</div>
+Note: 
+Phoenix je glavni web framework u elixiru.
+Ima sve tipične MVC stvari ali ima i jako dobru abstrakciju za websockete, presence, i sl.
+Isto tako je poprilično brz i jednostavan za razumijeti. Od početka do kraja obrade zahtjeva, jedostavno strukturu koja predstavlja zahtjev guramo kroz n funkcija.
+Abstrakcija websocketa je ovdje bitna stavka.
+---
+# Što je što
+
+## Phoenix live view
+
+- dodatak na Phoenix Framework
+- html preko žice
+- interaktivni html preko websocketa
+- SPA-like razina interakcije
+Note: 
+Phoenix Live View je library za Phoenix framework koji abstrakciju websocketa gura nekoliko koraka dalje. 
+---
+# Kako izgleda?
+
+<div class="code-multi-part">
+
+```elixir xs multipart
+# items_live.ex
+def mount(_params, _session, socket) do
+  items = Repo.all(Item)
+  socket = assign(socket, :items, items)
+  {:ok, socket}
+end
+
+def render(assigns) do
+  ~H"""
+```
+
+```html xs multipart
+  <ul>
+    <li :for={item <- @items}>
+      <UI.row_layout>
+        <a href={~p/items/#{item.id}}><%= item.text %></a>
+        <button phx-click="delete" phx-value-id={item.id}>X</button>
+      </UI.row_layout>
+    </li>
+  </ul>
+```
+
+```elixir xs multipart
+  """
+```
+```elixir xs multipart
+end
+
+def handle_event("delete", %{"id" => item_id}, socket) do
+  Repo.delete!(Item, id)
+  items = Enum.reject(socket.assigns.items, & &1.id === id)
+  socket = assign(socket, :items, items)
+  {:noreply, socket}
+end
+```
+</div>
+Note: 
+
+Kako to izgleda? Primjer koda ovdje je manje više potpun kod za korisnikovu interakciju s html sušeljem koje će se osvježiti u stvarnom vremenu, bez reloada cijele web stranice.
+
+Nije nešto kompliciran, ali ako u listi kliknemo na gumb X, taj item će nestati iz liste.
+
+Znači, imamo html koji renderiramo, imamo binding na user interakciju koja šalje nešto na backend, i imamo handlanje događaja kojeg trigerira ta interakcija. Sve bez js-a kojeg mi moramo pisati.
+---
+# Kako funkcionira?
+
+```mermaid
+graph RL
+  subgraph backend
+    A(LiveView Process)
+  end
+  subgraph frontend
+    B
+    U
+  end
+
+A --render state--> A
+A --handle events--> A
+A --HTML diff--> B((Client/Browser))
+B --push events--> A
+U((User)) <--interact--> B
+```
+
+Note: 
+Live view modul je proces na beamu. To nije isto kao i process na operacijskom sustavu, nego nešto puno lakše i jednostavnije.
+
+Process ima svoje stanje i red poruka koje mu se šalju.
+
+Render funkcija generira nešto što na kraju postane html i to se pokaže korisniku. Dodatno se hidrira event bindinzima ovisno o attributima dodijelenim html elementima.
+
+Uspostavi se websocket konekcija između klijenta i live view processa na backendu. 
+
+Ovisno o tome što korisnik radi, okidaju se događaji koji šalju poruke procesu na backendu. To bi bila handle_event funkcija.
+
+Process hendla poruke i ovisno o njima radi nešto, tipa osvježava state ili radi nešto s bsuness layerom pa onda osvježava state, itd.
+
+Sve to uzrokuje da se dijelovi html-a koji se trebaju regenerirati, regeneriraju. Taj diff se onda preko iste ws konekcije šalje na FE i updatea u domu.
+
+I tako u krug?
+
+---
+
+# Zašto?
+
+- JSON/Protobuf/Whatever API je nepotreban
+
+Note:
+
+Čemu sve to?
+Pojednostavni se i znatno smanji onaj slok koji obićno imamo kad je backend samo API, a frontend je SPA. Nema renderiranja JSON-a koji se onda koristi da bi se na klijentu renderirao HTML.
+
+Umjesto toga imamo puno tanji sloj koji skori direktni komunicira s BL-om.
+---
+
+# DEMO: Live Beats
+
+https://livebeats.fly.dev/begedin
+
+Note: 
+
+Al ajdemo na primjer ili dva.
+
+Ovaj prvi je službeni primjer librarya. Link pokazuje na moj profil. Ako se spojite, možete se poigrati malo.
+
+Efektivno, ovo je kolaborativni mp3 pplayer. Reprodukcija je na frontendu, ali svije dijelimo stanje - što se svira, koji je progress, itd.
+
+---
+
+# DEMO: Zmija
+
+https://livepixel.fly.dev
+
+Note: 
+
+Ovaj drugi je moja radinost. 
+Htio sam vidjeti koliko js-a treba za jednostavnu igru zmije. Ispada da ne baš puno, i iskreno, i to što ima bi se dalo smanjiti kad bi, recimo, umjesto pixi-a direktno renderirali svg, što možemo.
+
+---
+
+# Problemi?
+
+## Latencija
+
+- svaka interakcija je ws poruka gore i dolje
+- riješenje: ipak malo JS-a
+
+Note: 
+
+Glavni problem je latencija. Ova stvar funkcionira odlično kad je server na istom kontinentu, idealno na istoj polovici kontinenta.
+
+Kad idemo preko pola zemaljske kugle, onda imamo problem.
+
+---
+
+# Ipak malo JS-a
+
+## Phoenix.LiveView.JS
+
+```elixir
+def hide_modal(js \\ %JS{}) do
+  js
+  |> JS.hide(transition: "fade-out", to: "#modal")
+  |> JS.hide(transition: "fade-out-scale", to: "#modal-content")
+end
+```
+
+Razne mogucnosti
+
+```elixir
+add_class, remove_class, toggle_class, set_atribute, remove_attribute,
+toggle_attribute, show, hide, toggle, transition, dispatch, push, focus
+```
+
+Sitne client-side modifikacije HTML-a bez pisanja JS-a, "ručno" slanje evenata u DOM i na server, itd.
+
+Note:
+
+Riješenje je ipak tu i tamo koristiti JS, kako bi se efekt latencije stvario. Recimo, otvaranje dijaloga stvarno ne bi trebalo ovisiti o backendu, osim u iznimnim situacijama.
+
+Razni efekti i animacije isto tako.
+
+Zato imamo modul koji omogućuje pisanje JS-a bez pisanja JS-a.
+
+Osobno, ako developer koji jednako voli FE i BE, nisam baš lud za ovime, ali funkcionira i često zna biti korisno.
+
+---
+
+# Ipak malo JS-a
+
+## Hooks
+
+```html
+<div id="infinite-scroll" phx-hook="InfiniteScroll" data-page={@page}>
+```
+
+```js
+let Hooks = {}
+
+Hooks.InfiniteScroll = {
+  page() { return this.el.dataset.page },
+  mounted(){
+    this.pending = this.page()
+    window.addEventListener("scroll", e => {
+      if(this.pending == this.page() && scrollAt() > 90){
+        this.pending = this.page() + 1
+        this.pushEvent("load-more", {})
+      }
+    })
+  },
+  updated(){ this.pending = this.page() }
+}
+let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, ...})
+```
+
+Note: 
+
+Druga opcija je stvarno pisanje JS-a. Phoenix podržava koncept hookova. Hook je koji je objekt posebne strukture, koji se veže na dom element i živi s njim. Može reagirati na promjene doma, primati i slati evente, itd. 
+
+Hook je način na koji sam pixi povezao s live-viewom, recimo
+
+---
+
+# I to je to
+
+- fali još poneki detalj
+
+Note:
+
+I to je manje više to. Live view stvarno nije puno više od ovoga što sam ovdje naveo. Ima jos jedna manja stvar ili dvije, tipa ugrađena podrška za streamanje velikih listi, upload, i sl.
+
+Ali u osnovi, to je jedna relativno mala ali učinkovita biblioteka koja moć phoenix frameworka i elixir jezika gura u ovo područje.
+
+---
+
+# Još nešto
+
+- livebook
+
+Note:
+
+Definitivno još vrijedi spomenuti livebook, koji je live view verzija nečeta kao što je jupiter notebook.
+
+Znači code notebook s kojim se može puno toga. 
+
+Zašto? Jer se elixir par godina gura i u AI/ML vode, pa zašto ne.
+Isto tako je i u embedded computing vodama putem nerves frameworka, pa su takve stvari korisne i tamo.
+
+---
+# Ovo nije ništa novo
+
+- danas više ne
+
+| jezik | rješenje | prva verzija |
+|---|---|---|
+| C# | Blazor | 2018 |
+| Elixir | PhoenixLiveView | 2019 |
+| PHP | Livewire | 2020 |
+| Ruby on rails (i drugi) | Turbo/Hotwire | 2021 |
+| React | Next.js + Server Components | 2023 ? |
+
+- jedan od ranijih
+- jako lightweight
+  - elixir backend
+  - ws
+  - malo js "ljepila" ~4000 LOC
+
+Note:
+
+I za kraj, čisto da se razumijemo, kužim da ovo više nije ništa novo, ali vrijedi reći da je live view tu jedan od prvih i još uvijek jedan od najlakših i najbrćih.
+
+---
+
+# Prebaciti se na Elixir zbog ovoga?
+
+- možda za osobne projekte
+- moooožda za nove projekte
+- `live_view_native`
+
+Note:
+
+Ne, osim ako ste znatiželjni ili imate neki vanjski razlog. Tolko revolucionarno ipak nije.
+
+---
+<div class="centered">
+  <h1>Hvala! &nbsp;  Pitanja?</h1>
+  <div>@begedinnikola</div>
+  <div>github.com/begedin</div>
+  <div>bego.fly.dev</div>
+</div>
+
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"_":["slides/"],"static":"docs"}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {"theme":"forest"});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
+      Reveal.addEventListener('resize', cb);
+    </script>
+  </body>
+</html>
