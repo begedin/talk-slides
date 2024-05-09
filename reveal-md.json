@@ -1,3 +1,4 @@
 {
-    "assetsDir": "assets"
+    "assetsDir": "assets",
+    "plugins": ["reveal-notes"]
 }

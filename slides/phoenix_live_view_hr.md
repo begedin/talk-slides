@@ -9,7 +9,10 @@ template: "reveal-template-fixed-mermaid.html"
 <div class="centered" markdown="1">
   <h1>Phoenix Live View - SPA bez JS</h1>
   <h2>Nikola Begedin</h2>
-  <h3>Bego Solutions | <a>bego.dev</a>
+  <h3 style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.25em;">
+    <span style="text-align: right;">Bego Solutions</span>|<a>bego.fly.dev</a>
+    <span style="text-align: right;">V7</span>|<a>v7labs.com</a><br/>
+  </h3>
 </div>
 Note:
 
@@ -19,6 +22,22 @@ Ja sam Nikola i imam d.o.o. jer su obrti postali riskantni :)
 Posljednjih 7 godina radim s Elixir backendom, a posljednjih 5 s Vue.js na frontendu.
 
 Ovo predavanje će u fokusu imati jedan manji dio jednog web frameworka u elixiru.
+---
+
+# Što je phoenix live view
+
+- library, html preko žice
+- phoenix web framework
+- elixir 
+- erlang
+
+Note: 
+
+Phoenix live view je library za koncept koji se danas naziva html preko žice. Ideja je da umjesto apia koji renderiraju json i onda se koriste za generiranje htmla u nekom frontend spa frameworku, direktno šaljemo renderirani html.
+
+Osmisljen je da radi kao dodatak phoenix web frameworku, koji je glavni web framework za elixir funkcijski jezik.
+
+Elixir je jezik koji je pisan i radi na podlozi od erlang jezika.
 ---
 
 # Što je što?
@@ -43,11 +62,17 @@ fib_int(1, _, B) -> B;
 fib_int(N, A, B) -> fib_int(N-1, B, A+B).
 ```
 Note: 
-Mislim da je fer pretpostaviti da većina ovdje nije upoznata s elixirom, pa ću, evo, iskoristit nekoliko slideova da objasnim što je što.
-Elixir je funkcijski jezik, napisan u erlang funkcijskom jeziku.
+
 Erlang je funkcijski jezik razvijen unutar erricsona prije nekoliko desetljeća. Htjeli su jezik koji je jako dobar za telefonske platforme. Znači, real time, brz, otporan na rušenja i jako, jako dobar za bilo kakve concurrent operacije.
 I u tome su uspjeli, ali, mnogima baš ne leži sto se tiče sintakse.
-Slično javi, radi na virtualnom stroju, kojeg nazivaju Beam. Kod se kompajlira u beam kod, koji onda erlang runtime system konvertira u bytecode. 
+
+Slično javi, radi na virtualnom stroju, kojeg nazivaju Beam. Kod koji pišemo se kompajlira u beam kod, koji onda erlang runtime system konvertira u bytecode. 
+
+Ovo je primjer sintakse i možda vrijedi usmjeriti pažnju na feature erlanga koji je naslijedio i elixir, a to je da se definicija funkcije može sastojati od jedne ili više klauzula.
+
+Klauzula je pritom jedan "overload" funkcije, s jednim jasno definiranim oblikom argumenata. Kad pozivamo funkciju, izvršava se prva klauzula čiji definirani oblik argumenata odgovara argumentima koje smo funkciji dali. Znači, ako pozovemo funkciju fib s 0, izvršit će se prva klauzula, itd.
+
+Na taj način imamo jedan top level branching feature koji omogućava popriličnu preglednost kad čitamo kod.
 ---
 
 # Što je što?
@@ -74,10 +99,11 @@ end
 ```
 Note: 
 
-Elixir je isto funkcijski jezik, s ruby-like sintaksom, napisan u erlangu i elixiru. 
-Možda zvuči malo čudno, ali stvarno je tako. Osnovne funkcionalnosti su napisane u erlangu, a napredne u pravilu se svode na kombiniranje osnovnih.
+Elixir je isto funkcijski jezik, s ruby-like sintaksom, napisan u erlangu i elixiru. Znači, malo smo rekurzivni.
 
 Ruby-like je s dobrim razlogom - Jose Valim, autor jezika je bio Ruby developer.
+
+Ovdje vidimo primjer istog koda s prethodnog slidea, ali pisanog u elixiru.
 ---
 # Što je što?
 
@@ -121,6 +147,8 @@ Phoenix je glavni web framework u elixiru.
 Ima sve tipične MVC stvari ali ima i jako dobru abstrakciju za websockete, presence, i sl.
 Isto tako je poprilično brz i jednostavan za razumijeti. Od početka do kraja obrade zahtjeva, jedostavno strukturu koja predstavlja zahtjev guramo kroz n funkcija.
 Abstrakcija websocketa je ovdje bitna stavka.
+
+Veliki plus za mene osobno je upravo ta jednostavnost. Zapravo čitam request-response lifecycle je potpuno razumljiv i ima laku introspeckiju.
 ---
 # Što je što
 
@@ -128,8 +156,7 @@ Abstrakcija websocketa je ovdje bitna stavka.
 
 - dodatak na Phoenix Framework
 - html preko žice
-- interaktivni html preko websocketa
-- SPA-like razina interakcije
+
 Note: 
 Phoenix Live View je library za Phoenix framework koji abstrakciju websocketa gura nekoliko koraka dalje. 
 ---
@@ -176,7 +203,7 @@ end
 </div>
 Note: 
 
-Kako to izgleda? Primjer koda ovdje je manje više potpun kod za korisnikovu interakciju s html sušeljem koje će se osvježiti u stvarnom vremenu, bez reloada cijele web stranice.
+Kako to izgleda? Primjer koda ovdje je manje više potpun kod za korisnikovu interakciju s html sučeljem koje će se osvježiti u stvarnom vremenu, bez reloada cijele web stranice.
 
 Nije nešto kompliciran, ali ako u listi kliknemo na gumb X, taj item će nestati iz liste.
 
@@ -235,6 +262,7 @@ Umjesto toga imamo puno tanji sloj koji skori direktni komunicira s BL-om.
 # DEMO: Live Beats
 
 https://livebeats.fly.dev/begedin
+https://github.com/fly-apps/live_beats
 
 Note: 
 
@@ -242,13 +270,14 @@ Al ajdemo na primjer ili dva.
 
 Ovaj prvi je službeni primjer librarya. Link pokazuje na moj profil. Ako se spojite, možete se poigrati malo.
 
-Efektivno, ovo je kolaborativni mp3 pplayer. Reprodukcija je na frontendu, ali svije dijelimo stanje - što se svira, koji je progress, itd.
+Efektivno, ovo je kolaborativni mp3 player. Reprodukcija je na frontendu, ali svije dijelimo stanje - što se svira, koji je progress, itd.
 
 ---
 
 # DEMO: Zmija
 
 https://livepixel.fly.dev
+https://github.com/begedin/livePixel
 
 Note: 
 
@@ -264,11 +293,22 @@ Htio sam vidjeti koliko js-a treba za jednostavnu igru zmije. Ispada da ne baš 
 - svaka interakcija je ws poruka gore i dolje
 - riješenje: ipak malo JS-a
 
+## Sigurnost i performanse
+
+Potencijal za 
+
+- autentikacija ws konekcije
+- autorizacija
+- connection spam (ws, initial)
+  - memorija i CPU
+
 Note: 
 
 Glavni problem je latencija. Ova stvar funkcionira odlično kad je server na istom kontinentu, idealno na istoj polovici kontinenta.
 
 Kad idemo preko pola zemaljske kugle, onda imamo problem.
+
+Drugi problem je da ljudi često previde neke sigurnosne probleme. Stvari funkcioniraju drukčije, pa postoji potencijal za netipične greške
 
 ---
 
@@ -277,6 +317,8 @@ Kad idemo preko pola zemaljske kugle, onda imamo problem.
 ## Phoenix.LiveView.JS
 
 ```elixir
+alias Phoenix.LiveView.JS
+
 def hide_modal(js \\ %JS{}) do
   js
   |> JS.hide(transition: "fade-out", to: "#modal")
@@ -355,6 +397,8 @@ Ali u osnovi, to je jedna relativno mala ali učinkovita biblioteka koja moć ph
 # Još nešto
 
 - livebook
+  - demo
+- `live_view_native`
 
 Note:
 
@@ -364,6 +408,17 @@ Znači code notebook s kojim se može puno toga.
 
 Zašto? Jer se elixir par godina gura i u AI/ML vode, pa zašto ne.
 Isto tako je i u embedded computing vodama putem nerves frameworka, pa su takve stvari korisne i tamo.
+---
+
+# Još nešto
+
+- primjeri iz stvarnog svijeta
+  - Cars.com
+  - intellidoc.io
+  - logflare.app
+  - elixirstream.dev
+  - TeslaCarLot.com
+  - stiched.co.uk
 
 ---
 # Ovo nije ništa novo
@@ -392,9 +447,9 @@ I za kraj, čisto da se razumijemo, kužim da ovo više nije ništa novo, ali vr
 
 # Prebaciti se na Elixir zbog ovoga?
 
+- ne
 - možda za osobne projekte
 - moooožda za nove projekte
-- `live_view_native`
 
 Note:
 
