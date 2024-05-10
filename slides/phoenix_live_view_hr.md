@@ -394,17 +394,6 @@ Zašto? Jer se elixir par godina gura i u AI/ML vode, pa zašto ne.
 Isto tako je i u embedded computing vodama putem nerves frameworka, pa su takve stvari korisne i tamo.
 ---
 
-# Još nešto
-
-- primjeri iz stvarnog svijeta
-  - Cars.com
-  - intellidoc.io
-  - logflare.app
-  - elixirstream.dev
-  - TeslaCarLot.com
-  - stiched.co.uk
-
----
 # Ovo nije ništa novo
 
 - danas više ne
