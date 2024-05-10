@@ -40,18 +40,18 @@ Ovo predavanje će u fokusu imati jedan manji dio jednog web frameworka u elixir
 
 # Što je phoenix live view
 
-- library, html preko žice
-- phoenix web framework
-- elixir 
-- erlang
+- library za "html over the wire" (websockets)
+  - phoenix framework
+    - elixir 
+      - erlang
 
 Note: 
 
-Phoenix live view je library za koncept koji se danas naziva html preko žice. Ideja je da umjesto apia koji renderiraju json i onda se koriste za generiranje htmla u nekom frontend spa frameworku, direktno šaljemo renderirani html.
+Library za takozvani html preko žice. 
+Radi na podlozi od phoenix frameworka, koji je web framework za elixir jezik, koji je funkcijski jezik povrh erlang funkcijskog jezika. 
 
-Osmisljen je da radi kao dodatak phoenix web frameworku, koji je glavni web framework za elixir funkcijski jezik.
+Ovo je prva weblica gdje nisam jedini elixir developer, tako da sam siguran da će vam moć erlagna i elixira jako dobro demonstrirati Andrei u svojem predavanju danas posljepodne.
 
-Elixir je jezik koji je pisan i radi na podlozi od erlang jezika.
 ---
 
 # Što je što?
@@ -75,18 +75,8 @@ fib(N) -> fib_int(N, 0, 1).
 fib_int(1, _, B) -> B;
 fib_int(N, A, B) -> fib_int(N-1, B, A+B).
 ```
-Note: 
-
-Erlang je funkcijski jezik razvijen unutar erricsona prije nekoliko desetljeća. Htjeli su jezik koji je jako dobar za telefonske platforme. Znači, real time, brz, otporan na rušenja i jako, jako dobar za bilo kakve concurrent operacije.
-I u tome su uspjeli, ali, mnogima baš ne leži sto se tiče sintakse.
-
-Slično javi, radi na virtualnom stroju, kojeg nazivaju Beam. Kod koji pišemo se kompajlira u beam kod, koji onda erlang runtime system konvertira u bytecode. 
-
-Ovo je primjer sintakse i možda vrijedi usmjeriti pažnju na feature erlanga koji je naslijedio i elixir, a to je da se definicija funkcije može sastojati od jedne ili više klauzula.
-
-Klauzula je pritom jedan "overload" funkcije, s jednim jasno definiranim oblikom argumenata. Kad pozivamo funkciju, izvršava se prva klauzula čiji definirani oblik argumenata odgovara argumentima koje smo funkciji dali. Znači, ako pozovemo funkciju fib s 0, izvršit će se prva klauzula, itd.
-
-Na taj način imamo jedan top level branching feature koji omogućava popriličnu preglednost kad čitamo kod.
+Note: Al idemo ipak na brzinu reći što je to.
+Erlang je funkcijki jezik razvijen pod podrškom ericsona, namijenjen za telekom platforme. Ideja je bila osmislit jezik koji je robustan, otporan na rušenja i jako dobar za razne oblike concurrencya. U tome su uspjeli i ovako otprilike izgleda.
 ---
 
 # Što je što?
@@ -115,9 +105,7 @@ Note:
 
 Elixir je isto funkcijski jezik, s ruby-like sintaksom, napisan u erlangu i elixiru. Znači, malo smo rekurzivni.
 
-Ruby-like je s dobrim razlogom - Jose Valim, autor jezika je bio Ruby developer.
-
-Ovdje vidimo primjer istog koda s prethodnog slidea, ali pisanog u elixiru.
+Ovako izgleda i ima jako puno jako dobrih stvari.
 ---
 # Što je što?
 
@@ -144,7 +132,7 @@ attr(:result, :integer, required: true)
 def fib(assigns) do
   ~H"""
 ```
-```html multipart
+```html xs multipart
   <UI.card>
     <p data-n={n} data-result={result}>
       The <%= n %>th fibonacci number is <%= result %>
@@ -152,17 +140,15 @@ def fib(assigns) do
   </UI.card>
   """
 ```
-```elixir multipart
+```elixir xs multipart
 end
 ```
 </div>
 Note: 
-Phoenix je glavni web framework u elixiru.
-Ima sve tipične MVC stvari ali ima i jako dobru abstrakciju za websockete, presence, i sl.
-Isto tako je poprilično brz i jednostavan za razumijeti. Od početka do kraja obrade zahtjeva, jedostavno strukturu koja predstavlja zahtjev guramo kroz n funkcija.
-Abstrakcija websocketa je ovdje bitna stavka.
 
-Veliki plus za mene osobno je upravo ta jednostavnost. Zapravo čitam request-response lifecycle je potpuno razumljiv i ima laku introspeckiju.
+Phoenix je glavni web framework u elixiru.
+
+Može sve što može tipični mvc framework, ali isto zahvaljujući podlozi jako dobro radi stvari tipa websocket konekcije, pub sub, clustering, bilo kakov multi-process ponašanje, itd. Ima jako malo overheada tako da je i jako jako brz.
 ---
 # Što je što
 
@@ -172,7 +158,8 @@ Veliki plus za mene osobno je upravo ta jednostavnost. Zapravo čitam request-re
 - html preko žice
 
 Note: 
-Phoenix Live View je library za Phoenix framework koji abstrakciju websocketa gura nekoliko koraka dalje. 
+
+Phoenix live view uzima web sockete i s njima radi nešto magično. 
 ---
 # Kako izgleda?
 
@@ -215,11 +202,10 @@ def handle_event("delete", %{"id" => item_id}, socket) do
 end
 ```
 </div>
+
 Note: 
 
-Kako to izgleda? Primjer koda ovdje je manje više potpun kod za korisnikovu interakciju s html sučeljem koje će se osvježiti u stvarnom vremenu, bez reloada cijele web stranice.
-
-Nije nešto kompliciran, ali ako u listi kliknemo na gumb X, taj item će nestati iz liste.
+Pa evo primjera. Ovdje vidimo kod za interaktivnu listu "todova", gdje svaki ima tipku X, ciji klik uklanja todo sa stranice bez bilo kakvog refresha i s nulla js koda s naše strane.
 
 Znači, imamo html koji renderiramo, imamo binding na user interakciju koja šalje nešto na backend, i imamo handlanje događaja kojeg trigerira ta interakcija. Sve bez js-a kojeg mi moramo pisati.
 ---
@@ -275,8 +261,8 @@ Umjesto toga imamo puno tanji sloj koji skori direktni komunicira s BL-om.
 
 # DEMO: Live Beats
 
-https://livebeats.fly.dev/begedin
-https://github.com/fly-apps/live_beats
+- https://livebeats.fly.dev/begedin
+- https://github.com/fly-apps/live_beats
 
 Note: 
 
@@ -290,8 +276,8 @@ Efektivno, ovo je kolaborativni mp3 player. Reprodukcija je na frontendu, ali sv
 
 # DEMO: Zmija
 
-https://livepixel.fly.dev
-https://github.com/begedin/livePixel
+- https://livepixel.fly.dev<br/>
+- https://github.com/begedin/livePixel
 
 Note: 
 
@@ -304,17 +290,13 @@ Htio sam vidjeti koliko js-a treba za jednostavnu igru zmije. Ispada da ne baš 
 
 ## Latencija
 
-- svaka interakcija je ws poruka gore i dolje
+- svaka interakcija je ws roundtrip
 - riješenje: ipak malo JS-a
 
-## Sigurnost i performanse
+## Lako pogriješiti
 
-Potencijal za 
-
-- autentikacija ws konekcije
-- autorizacija
-- connection spam (ws, initial)
-  - memorija i CPU
+- greške u sigurnosti 
+- nepotrebno loše performanse
 
 Note: 
 
@@ -399,6 +381,8 @@ Hook je način na koji sam pixi povezao s live-viewom, recimo
 # I to je to
 
 - fali još poneki detalj
+  - html component/file references
+  - dobar testing library
 
 Note:
 
@@ -410,9 +394,9 @@ Ali u osnovi, to je jedna relativno mala ali učinkovita biblioteka koja moć ph
 
 # Još nešto
 
+- live view native
 - livebook
   - demo
-- `live_view_native`
 
 Note:
 

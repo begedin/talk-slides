@@ -32,7 +32,7 @@
 }
 
 code.xs {
-  font-size: 1em;
+  font-size: .6em;
 }
 
 .centered {
@@ -48,19 +48,23 @@ code.xs {
 
 .code-wrapper:has(code.multipart) {
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  padding: 0 1.2em;
+  padding: 0 1em;
   margin: 0;
   background-color: #383838; 
 }
 
+.code-wrapper:has(code.xs) {
+  font-size: 1em;
+}
+
 .code-wrapper:has(code.multipart):first-of-type {
-  padding-top: 1.2em;  
-  margin-top: 1.2em;
+  padding-top: 1em;  
+  margin-top: 1em;
 }
 
 .code-wrapper:has(code.multipart):last-of-type {
-  padding-bottom: 1.2em;  
-  margin-bottom: 1.2em;
+  padding-bottom: 1em;  
+  margin-bottom: 1em;
 }
 
 code.multipart.hljs {
