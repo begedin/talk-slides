@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "TT Octosquares Expanded Light";
+  src: url("assets/TT_Octosquares_Expanded_Light.ttf");
+}
+
+@font-face {
+  font-family: "TT Octosquares Expanded Medium";
+  src: url("assets/TT_Octosquares_Expanded_Medium.ttf");
+}
+
+:root {
+  --r-main-font: "TT Octosquares Expanded Light", sans-serif;
+  --r-heading-font: "TT Octosquares Expanded Medium", sans-serif;
+}
+
 .reveal h1,
 .reveal h2,
 .reveal h3,

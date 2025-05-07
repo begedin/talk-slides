@@ -2,250 +2,238 @@
 title: "13 Years Remote: Thriving as a Web Developer Without Burning Out"
 css: [weblica.css]
 ---
-## Nikola Begedin
-# 13 Years Remote: Thriving as a Web Developer Without Burning Out
-</div>
+
+# 13 Years Remote
+## Thriving as a Web Developer Without Burning Out
+### Nikola Begedin
+
 ---
 # Intro
 
-- had 2 non-remote jobs total
-- partially remote since ~2011
-- fully remote since end of 2012
-Note:  
-Hey everyone. My name is Nikola and with this talk, I was barely able to continue my weblica streak. I got the chance to become a speaker only last week, but thanks to a more general talk subject and AI tools, I was able to come prepared, more or less.
+* I work primarily with Vue and Elixir
+* Had two non-remote jobs total
+* Partially remote since \~2011
+* Fully remote since end of 2012
 
-So this talk is about working remotely for a very long time and not going crazy, basically.
+Note:
+Hey everyone! I'm Nikola, and I primarily work with Vue and Elixir. Honestly, this talk barely kept my Weblica streak alive—I got invited last minute. Luckily, thanks to a broadly relevant topic and some handy AI tools, I managed to put this together in time. Today, I'll talk about my experiences working remotely long-term without burning out. Just to give you an idea of how long that's been, I've been fully remote since late 2012, after only two brief, non-remote junior roles. It’s been quite a journey!
 
-How long? I started at some point towards the end of 2011, maybe early 2012. I actually had just two very short and very junior non-remote jobs. I've been self-employed for shoter than that, but not much shorter. I can safely say I've been fully remote since the end of 2012.
 ---
 # Goals
 
-- my remote yourney
-- lessons learned, legalities
-- WLB
-- strategies for growth, self-marketing
-- stories
-Note: 
-So what are my goals for this talk. Basically, share my experience. What I did, what I would've done differently, what I think I'll be doing going forward and how things might be different now than they were when I was starting.
-
-Towards the end, I hope some of you might have some questions, so I'll try to reserve a bit more time for Q&A. If that doesn't happen, I guess we'll have a longer coffee break.
-
----
-# My Remote Journey
-
-- _NOTE: Major clients only_
-- in 2011, UpWork (now ODesk), $5 hour
-- after a few weeks, $11 hour, 10-15 hours/week -> full time offer 
-- stagnation for 2-3 years
-- new gig on UpWork, $30 -> full time position
-- no more stagnation 
-Note: 
-So what was my remote journey?
-My first job was here, in Čakovec. It was a .NET position with a good chunk of frontend and basically, that was my plan - to be a .NET Web developer.
-
-After about a year, though, I started looking, and found a new job for slightly more money in Varaždin. Still .NET, basically the exact same tech stack, but we were effectively getting outsourced to a foreign company, so I started getting more confortable with communication in English. 
-
-I was slowly advancing, but I wanted to go faster. I was also living alone in appartment in Varaždin, knew only people from work and basically had nothing to do. So I discovered ODesk, now called UpWork and started looking for gigs. Back then, this was free, but these days, UpWork, when I look at it, feels more like a scam than a freelancing platform.
-
-After a few days of underselling myself, I found my first gig for a flat $5 fee. Someone wanted the source code of a chrome extension "deminified". Basically, apply formatting, figure out what the variables do and rename them to make the code somewhat readable. It was shady, but it paid and I got a 5 star review out of it.
-
-So on the next day, I got a gig that paid $5 an hour. It took 2-3 hours to finish, but I got another  5 star review and the client came back to me with more work every couple of days. My profile started to look nice, the client was event willing to pay more and after a few weeks of that, I landed a 10-20 hours a week repeat gig, for $11/hour.
-
-Now, we were looking at double what I was getting per hour at my day job.
-
-The volume of work was steadily increasing from then on, I started learning new things like ember.js and a bit of ruby and it was getting more and more stresful to do both this and the day job. I was effectively working 50+ hour weeks.
-
-So about a month later, I told the client I needed to stop. They offered me a full time remote position. 
-
-This is actually when it clicked - I could do this for real.
-
-We found a Croatian company that acts as an intermediary, and they hired me and paid my gross sallary for a $100 monthly fee. This approach continues for the next 2-3 years and I have to say, my growth stagnated. I was definitely learning new things, but asside from a few extra side gigs, my income remained flat. 
-
-Eventually, my Croatian-employed coleagues started catching up and I started to feel unconfortable not doing anything.
-
-Around this time, that new tax reform came in and starting a flat-taxation trade business (or as we call it, paušalni obrt), became an option. Switching to this from an intermediary would increase my net income, from the same gross income, but more importantly, it would allow me to find another direct client rather than one through UpWork.
-
-I did find one and we agreed on EUR30/hour. 
-
-So basically triple what I was getting.
-
-We switched from UpWork to direct a month later.
-
-This was supposed to be another 2-3 months tops, but towards the end of the second month, they invited me to visit on site, and they offered me a full time position again.
-
-Now, here, I did something I wouldn't recommend. I didn't want to burn bridges, so I promised 30 hours a week for the old client, so they can find a replacement, and then also 30 hours a week with the new client. I also found a third gig that I wanted to try out because I didn't know how the second one would turn out.
-
-This was by far the most stresful period of my life, up until the last few months, but that's not work related :)
-
-I could've easily dropped the other two and it would've been fine, but instead, for 3 months, i was doing 60-70 hours a week.
-
-But, this $30 client remained my primary client who I still work with today. 
-
-This time, though, I kept renegotiationg the contract as my skills were progressing. I also kept doing small gigs here and there to learn new things and get extra income, so overall, the stagnation didn't happen again.
-
-
----
-# My Remote Journey
-
-- NOT optimal
+* My remote journey
+* Lessons learned, including legalities
+* Work-life balance (WLB)
+* Strategies for growth and self-marketing
+* Stories
 
 Note:
-So my remote journey was clearly not optimal and there are for sure things I would've done differently if I did it again, but primarily, I would've been more proactive on finding ways to increase my hourly rate, and avoided the overworking that happend a few times throughout the years.
+I'm here to share my experiences: what worked, what didn’t, what I'd do differently, and what the future might hold. I’m also leaving ample time for questions, or we'll have a longer coffee break!
 
 ---
 
-# Legalities, getting paid
+# My Remote Journey
 
-- In the olden days, Payoneer
-- Intermediaries
-- Trade Business (Obrt), Transwerwise
-- Direct bank payments 
-- Now LLC
+* 2011, UpWork (then oDesk), \$5/hour
+* Quickly rose to \$11/hour, part-time
+* Full-time remote offer shortly after
+* Stagnation for 2-3 years
+* New gig at €30/hour, became full-time
+* Avoided future stagnation
 
-NOTE: 
-How did I get paid through all this
+Note:
+My first job was actually in Čakovec, at a junior .NET position. Some JS development quickly got in, but for the most part, I was following my plan of being a .NET developer.
 
-For the early upwork gigs, payoneer. THis was one of the early services that gave you a physical card you could use and it also did payouts through paypal. I didn't know of any other way at the time.
+I got the itch after about a year, and found a salary upgrade in Varaždin, cause that's what juniors do.
 
-As for the intermedieries, it was a service that existed because there clearly were customers. Taxwise, everything was clear, as I was getting a regular gross sallary in Croatia. It was effectively a regular employment, except the outsorcing went to the extreme.
+A year after that, because I was living alone, and did basically nothing, I decided I might try some side gigs online. Freelancing was starting to get talked about, but it was still very early.
 
-For the tradebusiness, i use transferwise initially, then switched to just direct payments to my local bank account. And that's what I kept for the LLC i'm working through now.
+I signed up for an ODesk account, and started looking for gigs.
+
+It's tough to get something when your profile is empty, so just sent offers until someone accepted.
+
+I got a flat $5 job to deminify a chrome extension. Basically, I was asked to format the code and rename the variables based on what it seems they're doing, to make it at least semi understandable. It took a few hours, so it was not worth the money, but it did get me my first 5 star review.
+
+This got me a $5 per hour gig, and that client, other then giving more reviews, also came back to me a few times with more work.
+
+After that, my profile started to look good, so I landed an 11 dollar an hour gig for 10-20 hours a week.
+
+Now, I was making some very nice money. Basically a second sallary for less than half the time it took me to get the first one.
+
+But I coldn't maintain this pace so eventually, I decided I'd stop. I told the client that and he countered with a full time position.
+
+He was already looking into it and said he found a Croatian company that acts as an intermediarey to higher for foreign businesses. It was basically the same kind of outsorcing a lot of local companies did at the time, but for a small flat fee and with zero managegement. He was willing to upp my hourly rate to $18 so that my net rate would get to about $12.
+
+I accepted and that was my next 2-3 years. Basically, I stagnated, but at double the sallary I had, this was fine for a while.
+
+My Croatian colleagues started catching up eventually, and this got me to wake up and look for ways to increase my income further.
+
+I learned about trade businesses and decided to switch to that. For the same hourly rate, I got a bit more net money, but that wasn't the main reason. It meant I could more easily extend and find new clients.
+
+I quickly found a new gig on ODesk, this time for 30 euros an hour. I did the same thing again. Kept working the old job, full time, with extra hours here. Except now it was 20-30. 
+
+In a month, they offered to switch from Odesk to working directly B2B. This eliminated the ODesk fee.
+
+Another month later, they invited me on site to meet their engineers. On my last day there, they offered me a full time engagement.
+
+And again, I decided not to burn bridges and continue working full time for the old gig for another 3 months so they could find a replacement that I could transition the work to.
+
+So for 4-5 months, I worked 60-70 hour weeks. I would not recommended.
+
+But that eventually stoped and the €30 client is still my current primary client. Here, I was smarter and continued renegotiating for higher rates, so there was no stagnation this time.
+
+Now keep in mind, I'm talking just about the major players. I still om occassion take smaller bits of work either from previous clients, or from new ones. 
+
+---
+
+# Legalities, Getting Paid
+
+* Payoneer initially
+* Intermediaries
+* Trade business (Obrt), TransferWise, Direct Bank Payments
+* LLC, Direct Bank Payments
+
+Note:
+
+How did I get payed. For the early ODesk gigs, I used payoneer. When I switched to the trade business, for a few months I used TransferWise due to the cheapness, but eventually just switched to direct bank payments. 
 
 ---
 
 # Legalities, Payoneer
 
-- Legality unclear
-- Not much I can do about it
+* Legality unclear
+* Few alternatives at the time
 
-NOTE: 
-Now for the actual legalities. 
-
- Honestly, using payoneer was probably shady, but I also have no idea how to report that for tax purposes. 
- It was a few hundred dollars, I've since lost both the account and any records they may have kept. If I ever get a tax bill, I'll happily pay it and move on.
-
- I'm not sure there was actually another feasible option at the time.
+Note:
+Using Payoneer was probably sketchy, but the options were limited, I didn't know better and even if I wanted to do something about it now, I don't have an account or any records. If I ever get a tax bill, I'll be happy to pay it, but it will be a few hundred euros at best.
 
 ---
 
-# Legalities, Intermediares
+# Legalities, Intermediaries
 
+* Probably fine
 
-- Probably fine
-
-NOTE: 
-Using an intermediary was probably fine. I can't think of a way how it wouldn't be. I was basically employed by a Croatian company that outsourced me and then left me to self-manage. Everything that needed to be paid to the government, was. I was also getting paid sick leave and vacation time as part of the contracts between the 3 sides and the client was paying for it.
+Note:
+Intermediaries were straightforward — I was essentially employed by a Croatian company, ensuring all legal obligations were covered. This arrangement provided clear benefits like sick leave and vacation, but it also means I was losing more of the gros income.
 
 ---
 
 # Legalities, Trade Business (Obrt)
 
-- Never got the investigation results
-NOTE: 
-For the trade business, yes, I did get the questionaire and no, I never got the results of the investigaton. Since I was always careful to maintain a proper B2B relationship through that and I actually had multiple clients, I'm reasonably confident it's all good.
+* Never got the questionare results
+
+Note:
+I received a questionnaire but never heard back. Maintaining proper B2B relationships and multiple clients gave me confidence I was compliant, but you never know with our tax environment.
+
 ---
+
 # Legalities, LLC
 
-- Should be fine?
-- _Breach of legal person_ ¯\\\_(ツ)\_/¯
-Note: 
-And as for the tradebusiness, that really should be fine, but when the trade business investigations started, people also started slinging terms like "Breach of legal person", so who knows.
+* Should be fine?
+* *Breach of legal person*? ¯\\*(ツ)*/¯
+
+Note:
+An LLC should be solid, though investigations into trade businesses stirred some worries about potential legal issues. Generally, it's probably okay.
+
 ---
+
 # Legalities
 
-- charge hours, or days, or half-days
-- no paid "vacation"
-- no paid sick lave
-- negotiate higher rates
-- have multiple clients
-- behave
-Note:
-Overall, my one tip to avoid legal issues here is, behave. 
-If you want to get employee benefits such as sick leave and vacation, bonuses, and who knows what, then be an employee, ether directly with the company you want to work with, or through something like Remote.com
-
-If you want B2B, then act B2B. Negotiate hourly/daily or half-daily rates that account for lack of sick leave and vacation, as well as higher risk you're taking on. Have multiple clients. Behave like you're self-employed, because that's what you're saying you are. 
----
-# WLB
-
-- More hours -> more money! 
-- Do you really need that?
-- Can you negotiate for more instead? Probably.
-- Can you find a better paying gig? Also probably.
-- Optimize per hour, not total
-
-NOTE: 
-So what did I learn through all this? 
-
-I leanred that more hours equaling more money is true, but it also equals less of other, more important stuff. Instead, increase your rate by renegotiation or finding better gigs. 
-
----
-# WLB
-
-- knowing when to stop is a skill
-- set yourself away on comms
-- introduce separation 
-  - office room
-  - coworking space
-  - hard stop at X hours
-  - plan out your time off ahead of time
-
-NOTE: 
-
-I also learned that its extremely easy to work way too much. Knowing when to stop is a skill you have to develop. Establishing boundaries and rules help. Having a separate working space helps to. Saying 5 PM is end of day also helps.
-
----
-# WLB
-
-- don't get two kids
-- don't live in a 50sqm appartment
-- find a coworking space, or a library, or a cafee with good internet (but get a VPN)
+* Hourly/daily rates
+* No paid vacations or sick leave
+* Negotiate higher rates
+* Multiple clients
+* Behave professionally
 
 Note:
 
-Also, don't get 2 kids and if you have to, then at least don't work from home out of a 50sqm appartment.
-A library is working for me, but if you have access to a coworking space, really consider it.
+Generally though, I strived to be legal. I'm B2B so I always act B2B
+I negotiate hourly or daily rates, or a flat per-project fee. 
+I pay for my own vacation and sick leave. I have multiple clients. I pay for my business trips, etc.
+
+If you want employee perks, go the employment route. If you're B2B, charge rates accounting for additional risks. Act accordingly.
 
 ---
-# Growth
 
-- I can't get better rates! :(
-- Grow like you would on a regular job
-- Do you want to be senior -> staff -> ...?
-  - Or maybe EM?
-- Is it obvious how much you contribute?
+# Work-Life Balance (WLB)
 
+* More hours, more money?
+* Negotiate higher rates, not more hours
+* Optimize per-hour income
+* Decide when it's enough, optimize free time.
+
+Note:
+
+So how did I deal with work life balance. Early on, obviously, not at all. These days, I think I'm a bit smarter.
+
+I've managed to teach myself that while more hours more money is true, it's also the least optimal route.
+
+I've also learned that I was underselling myself early on and that I should be afraid to ask for more or leave for more.
+
+I'm also learning that there's an amount that's enough and that at that point, I can optimize for free time - negotiate higher rates, then work less hours.
+
+---
+
+# WLB Strategies
+
+* Knowing when to stop is a kill
+* Set clear "offline" boundaries
+* Separate workspace (office, coworking)
+* Plan time off in advance
+
+Note:
+
+Over time, I've develope strategies on improving WLB. After certain hours, I kill my business communication. Unless there's a fire, 17:30 is a hard stop for me. I don't carry my laptop everywhere. I work from one location.
+
+I plan time off months im advance, otherwise i never take it.
+
+---
+
+# WLB: Practical Advice
+
+* Don't get two kids
+* Avoid tiny apartments
+* Use coworking spaces or libraries
+
+Note:
+Seriously—kids and small apartments complicate remote work. Find external spaces for better productivity.
+
+---
+
+# Growth Strategies
+
+* Can't get better rates?
+* Develop skills actively
+* Make contributions obvious
+* Pursue growth (senior, staff, EM?)
+
+Note:
 Note: But what if you cant get better rates. Well, then you have to change that fact. Find ways to grow. 
 
 Develop a strategy for career and skill growht. Do you want to become an EM, or increase on the technical path?
-Also, become someone your clients will want to want to work with and come back to. If they keep coming back, you have more time to grow skills as you spend less time looking for clients. Good communication skills really help with this part and just having and using those can be a big value add to your clients.
+
+Also, become someone your clients will want to want to work with and come back to. If they keep coming back, you have more time to grow skills as you spend less time looking for clients. 
+
+Good communication skills really help with this part and just having and using those can be a big value add to your clients.
 
 ---
-# Growth - strategies
 
-- practice transferable skills
-  - pragmatism
-  - communication
-  - strategy AND tactics
+# Growth: Transferable Skills
 
-- choose clients/projects that help you grow
+* Pragmatism, communication, strategy
+* Choose projects to boost growth
 
-Note: 
-
-You are also probably better off focusing on transferable skills, not skills specific to a language or a framework. Once you're past senior level, those matter way more. 
-If your clients are startups, pragmatism becomes extremely important. Clean code and doing things right are great, but a startup doesn't always have time for that, so it's up to you to figure out where to compromise and where not to.
-
-Communication also matters here. You are supposed to be a business of you own, self managed, with regular updates so your clients know what needs to happen. You should also be finding ways to boost the clients own engineering team, not just do the work they gave you and sign off. A healthy mixture of communcation plus a good sense of when to follow a long term strategy vs shot term tactics really help here.
-
-And then, choose clients and projects that help you grow. "Build me website" can be a lucrative one-off gig, but you won't learn anything new from it.
+Note:
+Transferable skills trump specific technical skills at senior levels. Communication and pragmatism are particularly valuable, to you and to your client, especially if they are a startup.
 
 ---
-# Marketability 
 
-- become known
-  - conference talks
-  - meetups
+# Growth: Self-Marketing
 
-Note: 
+* Conference talks, meetups
+* Side-projects, open source
+
+Note:
 
 So all the stuff I said helps negotiating better rates, but to get better clients, there is also the aspect of marketability. 
 
@@ -254,47 +242,60 @@ You need to promote yourself. Grow your network of recommendations, find ways to
 Do conference talks, go to and speak at meetups. It's not THAT hard to get in. If it's your first one and you're scared, find someone more experienced to partner with. 
 
 ---
-# Marketability - Smaller Ecosystem
 
-- Elixir is a small community. 
-- So is Vue
-- Smaller pond is good
+# Growth: Smaller Ecosystems
+
+* Small communities (Elixir, Vue)
+* Easier visibility, less competition
 
 Note:
-
 What really helped me here was the "choice" of tools I ended up with. Elixir and Vue are both relatively small communities. Just by having a few years of experience with both and being active, I managed to get speaker slots in several major conferences. Being in a small pond means you don't need to be as big to get a name for yourself.
 
 So maybe consider choosing a smaller framework. Don't go for an extreme niche, but it doesn't have to be React.
 
 ---
-# How things are different now
 
-- $5/hour when I was getting that was senior level, $11 was staff level or more, $30 was a dream
-- the dynamics are different
-- trade business is still probably the easiest way to start
-- LLC isn't that expensive if you have your first client ready to go
+# Remote Work Evolution
+
+* Then $5 an hour was senior, 11 a dream; 30 unimaginable
+* Dynamics evolved significantly
+* Easier to start a trade business or LLC
+
+Note:
+The landscape today is vastly more favorable to remote freelancers compared to when I started.
 
 ---
 
-# A Lesson and a Story
+# Leveraging Modern Tooling
 
-- speak out loud!
+* Use AI tools to extend capabilities
+* Produce and review code in unfamiliar languages
+* Write automation, scripts, CI, infrastructure
+* Learn as you use
 
-NOTE: 
-Just a short anecdote on what happens when you work remotely for 13 years.
-I'm married and I have two kids, I already said that. My partner and I don't talk a lot. We tend to be the silent types. One of my kids is 9 mo, the other 2.9, so sure, for the last yearh and a half, she became very talkative, but before that, for 10 years, I've spent 50% of my verbal communcation speaking in english. 100% of my verbal communication that is also technical.
+Note:
+Modern tooling, especially AI, significantly extends your capabilities. For example, AI helps me generate scripts or code snippets in languages I understand but don't fluently write. It's like understanding a spoken language clearly but struggling to speak it fluently—comprehension outpaces active ability. Using AI for such tasks saves considerable time, allowing me to focus more effectively on areas where I'm strongest.
 
-When I got to speak at my first ElixirConf in Warsaw, I've met Saša Jurić. A number of you probably know him but for those who don't, hes an author of several books on Elixir and he often speaks at conferences. This was 2020 or something, and the conference was the first time I met him. I greeted him and started speaking, in english. He said something along of the lines "you know we can speak croatian, right?". That flipped a switch.
+I drafted an outline of this talk using Chat GPT. I basically rewrote it all a few times after that, but getting a "complete" starting point can really speed you up.
 
-That's what happens.
+The other day, I client asked me to do something on a codebase I haven't touched in a while. I used cursor's agent to refamiliarize myself with the code, quickly used it to generate some missing test coverage and then that gave me the confidence to refactor and extned a feature. With a bit of extra time, I also managed to write a script that really helped stabilise the e2e tests in CI. I'm not skilled at writing scripts.
+
+---
+
+# Story Time
+
+* Talk to people!
+
+Note:
+Years of remote technical communication changed my daily language habits. An amusing incident at ElixirConf reminded me how remote work shapes even basic interactions.
 
 ---
 # Conclusion
 
-- it was a journey
-- 100% would recommend
+* A journey worth taking
+* 100% would recommend
 
-NOTE:
+Note:
 
 There really isn't a straighforward conclusion here. Yes, you can get more money. No, I don't think it's extremely stresful finding work, at least not any more than finding a regular job. 
 
@@ -304,6 +305,5 @@ The sources of stress tend to be different.
 
 Weird things happen when you mostly speak english.
 
-100% would recommend
 ---
 # Questions?
