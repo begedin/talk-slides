@@ -7,6 +7,10 @@ css: [weblica.css]
 ## Thriving as a Web Developer Without Burning Out
 ### Nikola Begedin
 
+Note:
+
+Hey everyone. My name is Nikola and today I'll be talking about how my 13 years of remote work went.
+
 ---
 # Intro
 
@@ -16,19 +20,28 @@ css: [weblica.css]
 * Fully remote since end of 2012
 
 Note:
-Hey everyone! I'm Nikola, and I primarily work with Vue and Elixir. Honestly, this talk barely kept my Weblica streak alive—I got invited last minute. Luckily, thanks to a broadly relevant topic and some handy AI tools, I managed to put this together in time. Today, I'll talk about my experiences working remotely long-term without burning out. Just to give you an idea of how long that's been, I've been fully remote since late 2012, after only two brief, non-remote junior roles. It’s been quite a journey!
+A little bit about me.
 
+I primarily work with Vue and Elixir. I had two non-remote jobs in total. I started remote work some time in 2011 and I've beel fully remote since the second half of 2012.
+
+This is also my 6th talk on Weblica, so the streak is uninterrupted, that almost didn't happen. I actually didn't submit one this year, because I wasn't sure what my schedule would be, but my schedulle opened up and las week, I found out a slot also oppened up, so here  am.
 ---
 # Goals
 
 * My remote journey
-* Lessons learned, including legalities
+* Lessons learned
+* Legal aspect
 * Work-life balance (WLB)
 * Strategies for growth and self-marketing
 * Stories
 
 Note:
-I'm here to share my experiences: what worked, what didn’t, what I'd do differently, and what the future might hold. I’m also leaving ample time for questions, or we'll have a longer coffee break!
+
+My goal today is primarily to share my experience. I'll share some lessons learned and strategies I find to be effective, talk about legal tuff and maybe share a story rot two.
+
+But do keep in mind, my experience is probably different from others who started back then and for sure will be different from anyone starting today
+
+I'm hoping you'll have questions, so I'll also leave a bit more room for that at the end. If you end up not having any, we'll have a longer coffee break.
 
 ---
 
@@ -42,47 +55,58 @@ I'm here to share my experiences: what worked, what didn’t, what I'd do differ
 * Avoided future stagnation
 
 Note:
-My first job was actually in Čakovec, at a junior .NET position. Some JS development quickly got in, but for the most part, I was following my plan of being a .NET developer.
 
-I got the itch after about a year, and found a salary upgrade in Varaždin, cause that's what juniors do.
+My first job out of college was actually in Čakovec, a .NET position. It very soon became .NET web development, which is what I actually wanted to go with a the time.
 
-A year after that, because I was living alone, and did basically nothing, I decided I might try some side gigs online. Freelancing was starting to get talked about, but it was still very early.
+About a year after starting,  got the junior itch to loo for something else, and I did, in Varaždin, with pretty much the exact same tech stack.
 
-I signed up for an ODesk account, and started looking for gigs.
+Another year later, after living for two years in Varaždin. I didn't know anyone and I didn't really have a reason to meet anyone, so I was bored. 
 
-It's tough to get something when your profile is empty, so just sent offers until someone accepted.
+I learned about the possibility of freelancing and got curious.
 
-I got a flat $5 job to deminify a chrome extension. Basically, I was asked to format the code and rename the variables based on what it seems they're doing, to make it at least semi understandable. It took a few hours, so it was not worth the money, but it did get me my first 5 star review.
+Very soon, I decided to create an acccount on ODesk to see what happens.
 
-This got me a $5 per hour gig, and that client, other then giving more reviews, also came back to me a few times with more work.
+My profile was new and empty, so it was hard to find a gig, but after a week or two. I got my first chance. It was a flat $5 job for a couple of hours of work. A client asked me to deminify a chrome extension. 
 
-After that, my profile started to look good, so I landed an 11 dollar an hour gig for 10-20 hours a week.
+Sounded shady, but I needed a review, so I spent hafl a day doing it and it went well. I was communicative, did what was asked and more, and the client was happy enough to give me a 5 star review.
 
-Now, I was making some very nice money. Basically a second sallary for less than half the time it took me to get the first one.
+THe next job was $5 an hour, which was about a 4x increase from the first one.
 
-But I coldn't maintain this pace so eventually, I decided I'd stop. I told the client that and he countered with a full time position.
+This client was also happy and kept comming back to me with more work for a few weeks. I also gradually got my rate up to about $8 and becasue every return was a separate job entry and a separate review, my profile filled up nicely.
 
-He was already looking into it and said he found a Croatian company that acts as an intermediarey to higher for foreign businesses. It was basically the same kind of outsorcing a lot of local companies did at the time, but for a small flat fee and with zero managegement. He was willing to upp my hourly rate to $18 so that my net rate would get to about $12.
+I was maybe a few months in at this point an I found the perfect chance. A US developer was looking for someone cheap to do product experiments with. He would pay me $11 an hour for 10-20 hours per week to try out building stuff. He also wanted to increase his mentorhsip skills so he was happy to offer guidance.
 
-I accepted and that was my next 2-3 years. Basically, I stagnated, but at double the sallary I had, this was fine for a while.
+This was great, I was now alsmost making an extra salary. 
 
-My Croatian colleagues started catching up eventually, and this got me to wake up and look for ways to increase my income further.
+But, I was also doing 50-60 hours per week. As part of my regular job, i partnered with a colleague to prepare a conference talk, which was also eating into my time. 
 
-I learned about trade businesses and decided to switch to that. For the same hourly rate, I got a bit more net money, but that wasn't the main reason. It meant I could more easily extend and find new clients.
+Very soon, I felt overworked and because this freelancing gig didn't seem like it would last, I decided I had to stop. 
 
-I quickly found a new gig on ODesk, this time for 30 euros an hour. I did the same thing again. Kept working the old job, full time, with extra hours here. Except now it was 20-30. 
+I told the client and he countered with a full time employment offer. Since he was based in the US, i didn't see this as a possibility, but he did research, and found out you could higher a Croatian company to act as an intermediary. They would hire me, pay my gross sallary with all the taxes and benefits and charge that + an extra feee to the us client for this service.
 
-In a month, they offered to switch from Odesk to working directly B2B. This eliminated the ODesk fee.
+The client even offered to rase my rate to about 18, so that after taxes and benefits, I'd be getting about 12. I couldn't say no to that.
 
-Another month later, they invited me on site to meet their engineers. On my last day there, they offered me a full time engagement.
+For 2-3 years, I was perfectly happy with this and nothing changed other than an odd smaller gig to keep my profile on ODesk active.
 
-And again, I decided not to burn bridges and continue working full time for the old gig for another 3 months so they could find a replacement that I could transition the work to.
+Because I stagnated, the big leap ahead I got started to get smaller, so I started thinking about what I could do next.
 
-So for 4-5 months, I worked 60-70 hour weeks. I would not recommended.
+Around this point, a flat-taxed trade business (paušalni obrt) was becoming all the rage, so I told the client I'd like to switch to that, because I'd be getting more money out and I still occasionally get other clients anyway.
 
-But that eventually stoped and the €30 client is still my current primary client. Here, I was smarter and continued renegotiating for higher rates, so there was no stagnation this time.
+This was one of the reasons, sure, but the other was, I got way more flexibility out of it and I could do a repeat of 2012.
 
-Now keep in mind, I'm talking just about the major players. I still om occassion take smaller bits of work either from previous clients, or from new ones. 
+I found another client on ODesk, this time for EUR30/hour. ODesk and VAT was taking up 25% of that, but it was still an increase. A month later, I convinced them to work with me directly, off of ODesk. Another month later, they invited me on site because they "wanted me to meet their team", but on my last day there, they offered me a full time engagement.
+
+So the same thing happened again, and I almost doubled my income again.
+
+I also did the same stupid thing again. I didn't just switch, i spent another 2 and a half months, so almost 5 months total, working both jobs, so the previous client could find a replacement that I could help transition.
+
+So we're talking 5 months of 60-70 hours per week. The second most stressful time of my life. 
+
+But that passed and I stuck with this new client as my primary source of income to this day.
+
+I was also more experienced and learned to continually renegotiate my rates, so there was no stagnation this time.
+
+So here we are today.
 
 ---
 
@@ -95,7 +119,9 @@ Now keep in mind, I'm talking just about the major players. I still om occassion
 
 Note:
 
-How did I get payed. For the early ODesk gigs, I used payoneer. When I switched to the trade business, for a few months I used TransferWise due to the cheapness, but eventually just switched to direct bank payments. 
+Let's talk finances nad legalities.
+
+How did I get paid? It's a pretty short story. For the early ODesk gigs, I used Payoneer. The itnermeddiary company was my employer, so there, it was typical bank account stuff. When I switched to a trade business, for a few months I used TransferWise due to the cheapness, but eventually just switched to direct bank payments, because it was simpler and made me appear more official. For the LLC I opened a few years later,  continued to do the same.
 
 ---
 
@@ -105,7 +131,10 @@ How did I get payed. For the early ODesk gigs, I used payoneer. When I switched 
 * Few alternatives at the time
 
 Note:
-Using Payoneer was probably sketchy, but the options were limited, I didn't know better and even if I wanted to do something about it now, I don't have an account or any records. If I ever get a tax bill, I'll be happy to pay it, but it will be a few hundred euros at best.
+
+Using Payoneer was probably sketchy, but the options were limited at the time and I personally didn't know of any.
+
+I'm pretty sure I should've paid some taxes that I didn't, but I don't have an account or any records anymore, so all I can say is, if I ever get a tax bill, I'll be happy to pay it, but it will be a few hundred euros at best.
 
 ---
 
@@ -114,7 +143,7 @@ Using Payoneer was probably sketchy, but the options were limited, I didn't know
 * Probably fine
 
 Note:
-Intermediaries were straightforward — I was essentially employed by a Croatian company, ensuring all legal obligations were covered. This arrangement provided clear benefits like sick leave and vacation, but it also means I was losing more of the gros income.
+Intermediaries were straightforward — I was essentially employed by a Croatian company, ensuring all legal obligations were covered. This arrangement provided clear benefits like sick leave and vacation, but it also means I was losing more of the gross income.
 
 ---
 
@@ -123,7 +152,8 @@ Intermediaries were straightforward — I was essentially employed by a Croatian
 * Never got the questionare results
 
 Note:
-I received a questionnaire but never heard back. Maintaining proper B2B relationships and multiple clients gave me confidence I was compliant, but you never know with our tax environment.
+
+For the trade business, I got the infamous questionare as well as a followup set of questions, but after that was answered, I got ghosted. I emailed the agent a bunch of times cause I wanted to close that chapter in my head, but I guess the threat of someone misinterpreting what I was doing will forever loom over my head.
 
 ---
 
@@ -133,59 +163,67 @@ I received a questionnaire but never heard back. Maintaining proper B2B relation
 * *Breach of legal person*? ¯\\*(ツ)*/¯
 
 Note:
-An LLC should be solid, though investigations into trade businesses stirred some worries about potential legal issues. Generally, it's probably okay.
+My current LLC should be solid, but you never know. I did hear about the term "breach of legal person", so :shrug
 
 ---
 
 # Legalities
 
 * Hourly/daily rates
-* No paid vacations or sick leave
-* Negotiate higher rates
+* No other benefits
 * Multiple clients
-* Behave professionally
+* Negotiate higher rates
 
 Note:
 
-Generally though, I strived to be legal. I'm B2B so I always act B2B
-I negotiate hourly or daily rates, or a flat per-project fee. 
-I pay for my own vacation and sick leave. I have multiple clients. I pay for my business trips, etc.
+Generally, I made a really big effort to behave as a sole proprietorship owner, not an employee, 
 
-If you want employee perks, go the employment route. If you're B2B, charge rates accounting for additional risks. Act accordingly.
+I get clients to sign clear contracts. I negotiate hourly or daily rates, or a flat per-project fee, not a fixed monthly amount.
+
+I make it clear my sick leave and vacation s my own risk/cost. I have multiple clients. I pay for business and conference trips.
+
+As a result of that bigger risk and cost, I'm able to negotiate higher rates.
 
 ---
 
 # Work-Life Balance (WLB)
 
 * More hours, more money?
-* Negotiate higher rates, not more hours
 * Optimize per-hour income
-* Decide when it's enough, optimize free time.
+* Optimize free time.
 
 Note:
 
-So how did I deal with work life balance. Early on, obviously, not at all. These days, I think I'm a bit smarter.
+With the legal stuff out of the way, let's talk work life balance.
 
-I've managed to teach myself that while more hours more money is true, it's also the least optimal route.
+For most of my career, I didn't have any. These days, I like to think I'm a bit smarter.
 
-I've also learned that I was underselling myself early on and that I should be afraid to ask for more or leave for more.
+I've managed to teach myself that while more hours more money is true, it's not sustainable  I've also traine myself into having enough confidence to negotiate or look for options.
 
-I'm also learning that there's an amount that's enough and that at that point, I can optimize for free time - negotiate higher rates, then work less hours.
+I'm now also learning that there is an amount that's "enough" and past that, I'd rather do fewer hours than get more money, so I'm building up what I need to start heading in that direction.
 
 ---
 
 # WLB Strategies
 
-* Knowing when to stop is a kill
+* Knowing when to stop is a skill
 * Set clear "offline" boundaries
 * Separate workspace (office, coworking)
 * Plan time off in advance
 
 Note:
 
-Over time, I've develope strategies on improving WLB. After certain hours, I kill my business communication. Unless there's a fire, 17:30 is a hard stop for me. I don't carry my laptop everywhere. I work from one location.
+Over time, I had to build up skills to help with WLB. 
 
-I plan time off months im advance, otherwise i never take it.
+Knowing when to stop is a skill. When you're at an office, it's when it closes, or when most people leave. You are urged to do the same or risk your colleagues disliking you.
+
+At home, your family helps with that, but the pressure is lower nad if you're single, there's no such thing.
+
+So you have to learn to help yourself. Set an alarm when it's hard EOD for you. Kill any business communication past that point. Work from one place in your home only, or if you can, have a separate working location.
+
+Plan your time off months in advance.
+
+There's a bunch you can do, but because you're "On your own", key is to be proactive and intentional with it.
 
 ---
 
@@ -193,38 +231,49 @@ I plan time off months im advance, otherwise i never take it.
 
 * Don't get two kids
 * Avoid tiny apartments
-* Use coworking spaces or libraries
 
 Note:
-Seriously—kids and small apartments complicate remote work. Find external spaces for better productivity.
+
+Also, don't get two kids nad don't live and work from a 50 sqm appartment containing your entire family.
+
+Or do, and get a crash course in WLB improving skills. :)
 
 ---
 
 # Growth Strategies
 
 * Can't get better rates?
-* Develop skills actively
-* Make contributions obvious
-* Pursue growth (senior, staff, EM?)
+* Show your worth to your clients
+  * Be proactive
+  * Make contributions obvious
+  * Fill in roles they are missing in their team
 
 Note:
-Note: But what if you cant get better rates. Well, then you have to change that fact. Find ways to grow. 
 
-Develop a strategy for career and skill growht. Do you want to become an EM, or increase on the technical path?
+What if you'e stuck and stagnating. Maybe you can't get better rates.
 
-Also, become someone your clients will want to want to work with and come back to. If they keep coming back, you have more time to grow skills as you spend less time looking for clients. 
+First, I'll argue that you probably can. If you'e working remotely and keeping a client, you are probably good enough to charge them a bit more, for sure good enough to find someone who pays a bit better.
 
-Good communication skills really help with this part and just having and using those can be a big value add to your clients.
+But if you stronlgy feel that's not the case, then chage it.
+
+First, make sure your client knows your worth. Don't just silently close tickets, be proactive in looking for things in their process and code to improve as you do it. Offer advice. Maybe start mentoring their internal engineerng team. Be active in sync meetings, mediate.
+
+Basically make sure you're visible and as you do that more, you'll get better at it and your negotiatons will go way beter.
+
+Even if the project ends, there will be another, and they will reach out you instead of risking looking for someone else.
 
 ---
 
 # Growth: Transferable Skills
 
 * Pragmatism, communication, strategy
-* Choose projects to boost growth
+* Choose projects that help you grow
 
 Note:
-Transferable skills trump specific technical skills at senior levels. Communication and pragmatism are particularly valuable, to you and to your client, especially if they are a startup.
+
+Also think about growing transferable skills. Being really good at React is great, but that only helps with React. 
+
+Understanding good architecture, efficient communication, the difference between stratega and tactics, how to be pragmatic, those work with any language, any framework, on any project.
 
 ---
 
@@ -235,11 +284,13 @@ Transferable skills trump specific technical skills at senior levels. Communicat
 
 Note:
 
-So all the stuff I said helps negotiating better rates, but to get better clients, there is also the aspect of marketability. 
+And then there's also self marketing. You'r name wont appear on a client's company employee list are they likely to promote you. You can't list "worked at Unicorn" on your resume.
 
-You need to promote yourself. Grow your network of recommendations, find ways to show off the work you're doing for your clients. Have side-projects if you can. Contribute to open source. 
+But you can have a great github profile with lot's of contributions on some open source project. You can be listed as a conference speaker and have your talk published on youtube.
 
-Do conference talks, go to and speak at meetups. It's not THAT hard to get in. If it's your first one and you're scared, find someone more experienced to partner with. 
+And if you do that, your client might want to promote the fact that you're helping them. Other clients will for sure be more likely to take a risk with you, because it won't look like a risk.
+
+If you're early in your career, consider meetups instead, maybe lighting talks, or find someone more senior to partner on a talk with.
 
 ---
 
@@ -249,57 +300,100 @@ Do conference talks, go to and speak at meetups. It's not THAT hard to get in. I
 * Easier visibility, less competition
 
 Note:
-What really helped me here was the "choice" of tools I ended up with. Elixir and Vue are both relatively small communities. Just by having a few years of experience with both and being active, I managed to get speaker slots in several major conferences. Being in a small pond means you don't need to be as big to get a name for yourself.
 
-So maybe consider choosing a smaller framework. Don't go for an extreme niche, but it doesn't have to be React.
+In my case, what I think helped a great deal was the "choice" of tools I ended up with. 
+Elixir and Vue both have relatively small communities. 
+
+Just by having a few years of experience with both and being active, I managed to get speaker slots in several major conferences. I'm able to make small contributions to major open source elixir and vue projecsts. I can write a bloc article and there's a good chance a newsletter will publish it. 
+
+Being in a small pond means you don't need to be as big to get a name for yourself.
+
+So maybe consider a smaller language or framwork. Don't go for an extreme niche, but it doesn't have to be React.
+
+---
+
+# Leveraging Modern Tooling
+
+* Use AI to offer more, find more work, learn
+* Expand potential clients
+
+Note:
+Modern tooling, especially AI, also significantly extends your capabilities. 
+
+I'm not talking vibe coding, but I am talking that, while you may not be a guy that writes scripts (like I'm not), you ca use AI to write a script for you, proof read it, test it and get something automated in under an hour that would previously take a day for you to figure out.
+
+That's what i did a ways days ago.
+
+You can spend 2 hours debuging 150 lines of complex code to try and figure out why it's failing in a rare scenario, or you can try asking a AI.
+
+You can try out a new technology by doing a bit of vibe coding, then read what it spits out, learn a thing or two about it, improve it and suddenly you know a bit more of a new language or a new framework, expanding your option.
+
+You can ask it to generate an architectural diagram of some codebase to get a quick overview of how things are connected. I do that almost daily for parts of a big codebase.
+
+You can ask it for advice on how to reword a slide or your speaker notes. Ask it to proof read or to look for inconsistencies.
+
+I don't think AI will replace, i think what it's already doing is it's allowing us to do more in less time, which is great if you want to optimize for free time, like i'm trying to do.
+
+It also expands your options, because you are able to offer service you wouldn't otherwise.
 
 ---
 
 # Remote Work Evolution
 
 * Then $5 an hour was senior, 11 a dream; 30 unimaginable
-* Dynamics evolved significantly
+* COVID made remote more common
 * Easier to start a trade business or LLC
 
 Note:
-The landscape today is vastly more favorable to remote freelancers compared to when I started.
+
+Now all this is my experience, starting 13 years ago. I would call it a success. I think a good amount of luck helped, but my ability to communicate and general pragmatism was also useful throughout.
+
+Someone else who started back then will probably have a completely different story.
+
+Someone starting today? Definitely completely different.
+
+But in my opinion the biggest difference was that when I started, Croatia was seen as a source of cheap labor. When my hourly rate was 18, I know for a fact companies in the US were charging $200-400 per hour of consulting, depending on their location.
+
+Back then, also, almost no one working remotely and now, COVID made sure this is a perfectly standard opton for regualar company employees.
+
+So these days, doubling your income within half a year by switching to remote is unlikely, and the ability to work from home is not such a big deal.
+
+So I guess I'm having a bit of a harder time figuring out what would make it attractive.
+
+I would say, probably, it still allows you more flexibility than regular employment, and it gives you more options in what to work with or on. And, you still probably get significantly more money, just not as big of a difference as it was back then.
 
 ---
 
-# Leveraging Modern Tooling
-
-* Use AI tools to extend capabilities
-* Produce and review code in unfamiliar languages
-* Write automation, scripts, CI, infrastructure
-* Learn as you use
-
-Note:
-Modern tooling, especially AI, significantly extends your capabilities. For example, AI helps me generate scripts or code snippets in languages I understand but don't fluently write. It's like understanding a spoken language clearly but struggling to speak it fluently—comprehension outpaces active ability. Using AI for such tasks saves considerable time, allowing me to focus more effectively on areas where I'm strongest.
-
-I drafted an outline of this talk using Chat GPT. I basically rewrote it all a few times after that, but getting a "complete" starting point can really speed you up.
-
-The other day, I client asked me to do something on a codebase I haven't touched in a while. I used cursor's agent to refamiliarize myself with the code, quickly used it to generate some missing test coverage and then that gave me the confidence to refactor and extned a feature. With a bit of extra time, I also managed to write a script that really helped stabilise the e2e tests in CI. I'm not skilled at writing scripts.
-
----
-
-# Story Time
+# Unexpected Effects
 
 * Talk to people!
 
 Note:
-Years of remote technical communication changed my daily language habits. An amusing incident at ElixirConf reminded me how remote work shapes even basic interactions.
+
+We're almost there, so time for a story.
+
+On my first international elixir conference, bout 5 years ago, I got to meet Saša Jurić. Some of you probably know him or off him, but for those that don't, he's a prominent Elixir engineer and an author of several books on Elixir.
+
+We met at the conference venue. I greeted him and started speaking to him. In English. He seemed confused and told me "you do know we can speak croatian, right?" A switch flipped and we continued in croatian.
+
+I've been remote for 13 years. I live with a wife and two kids, oldest getting close to 3 years, so she hasn't been speaking for THAT long. I'm also not a very social guy and rarely hang out with a lot of other people. Mostly, it's just the family.
+
+So for the first 10 years of remote, half of my spoken conversations and almost 100% of my technical conversations was in English. The other half was with my wife.
+
+So I guess I started defaulting to english.
+
+That's what happens.
 
 ---
 # Conclusion
 
-* A journey worth taking
-* 100% would recommend
+* Was it worth it?
 
 Note:
 
-There really isn't a straighforward conclusion here. Yes, you can get more money. No, I don't think it's extremely stresful finding work, at least not any more than finding a regular job. 
+There really isn't a straighforward conclusion here. Yes, you can get more money. No, I don't think it's extremely stresful finding work, at least not any more than finding a regular job, at least not in our industry.
 
-THere are regular jobs that are equally or more stresful than being self-employed. 
+There are regular jobs that are equally or more stresful than being self-employed. 
 
 The sources of stress tend to be different.
 
